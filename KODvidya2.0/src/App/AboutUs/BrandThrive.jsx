@@ -9,7 +9,7 @@ const HeroSection = () => {
         <div className="relative z-10 flex flex-col md:flex-row w-full p-8 md:p-20 bg-gold/10">
           <div className="flex-1 flex flex-col justify-center items-start">
             <h1 className="text-6xl text-gold font-Bebas md:text-6xl mb-4">
-              CodeMechanism Infoech Where Brands Thrive in the Digital World.
+              CodeMechanism Infotech Where Brands Thrive in the Digital World.
             </h1>
             <p className="text-xl md:text-xl text-blue font-Sans">
               We specialise in creating effective solutions in the areas of

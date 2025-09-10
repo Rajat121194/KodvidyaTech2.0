@@ -36,7 +36,7 @@ export default function WelcomeOverlay({ isVisible }) {
   return (
     <div
       className={`fixed inset-0 flex flex-col items-center justify-center 
-                  bg-gold/30 backdrop-blur-md z-[9999] 
+                  bg-kalu/30 backdrop-blur-md z-[9999] 
                   transition-transform duration-5000 ease-in-out
                   ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >

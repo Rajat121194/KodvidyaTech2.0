@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaLaptopCode } from "react-icons/fa";
 import { HiGlobeAlt } from "react-icons/hi2";
 import { IoPhonePortrait } from "react-icons/io5";
@@ -8,6 +8,7 @@ import { SiTestinglibrary } from "react-icons/si";
 import { ImBullhorn } from "react-icons/im";
 import { GiPentarrowsTornado } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 const services = [
   {
@@ -138,6 +139,71 @@ const services = [
 export default function ServiceSection() {
   const [selectedService, setSelectedService] = useState(services[0]);
 
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+  const processRef = useRef(null);
+
+  // Helper: split text into spans (for typing effect)
+  const splitText = (element, text) => {
+    element.innerHTML = "";
+    text.split("").forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      element.appendChild(span);
+    });
+  };
+
+  useEffect(() => {
+    if (!titleRef.current || !descRef.current || !processRef.current) return;
+
+    // Reset
+    splitText(titleRef.current, selectedService.title);
+    splitText(descRef.current, selectedService.description);
+
+    // Animate Title
+    gsap.fromTo(
+      titleRef.current.querySelectorAll("span"),
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.05,
+        stagger: 0.05,
+        ease: "none",
+      }
+    );
+
+    // Animate Description
+    gsap.fromTo(
+      descRef.current.querySelectorAll("span"),
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.01,
+        stagger: 0.02,
+        ease: "none",
+        delay: 0.5,
+      }
+    );
+
+    // Animate Process (line by line typing)
+    const processItems =
+      processRef.current.querySelectorAll("li .process-text");
+    processItems.forEach((spanEl, index) => {
+      splitText(spanEl, selectedService.process[index]);
+      gsap.fromTo(
+        spanEl.querySelectorAll("span"),
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.03,
+          stagger: 0.03,
+          ease: "none",
+          delay: 1 + index * 0.6,
+        }
+      );
+    });
+  }, [selectedService]);
+
   return (
     <div className="p-6 md:p-12 bg-chitu min-h-screen ">
       <h2 className="text-6xl text-gold tracking-wide mb-2 font-Bebas">
@@ -145,6 +211,7 @@ export default function ServiceSection() {
       </h2>
 
       <div className="flex flex-col md:flex-row gap-6">
+        {/* LEFT MENU */}
         <div className="flex-1 bg-chitu rounded-xl overflow-hidden border-2 border-blue">
           {services.map((service) => (
             <button
@@ -162,27 +229,32 @@ export default function ServiceSection() {
           ))}
         </div>
 
+        {/* RIGHT CONTENT */}
         <div className="flex-[2] bg-gold/10 border-2 border-blue rounded-xl p-3 flex flex-col justify-between">
           <div>
-            <h2 className="text-5xl text-gold font-Bebas mb-1 ">
+            <h2 ref={titleRef} className="text-5xl text-gold font-Bebas mb-1">
               {selectedService.title}
             </h2>
 
-            <p className="text-blue text-xl mb-2">
+            <p
+              ref={descRef}
+              className="text-blue text-xl mb-2 whitespace-pre-line"
+            >
               {selectedService.description}
             </p>
 
-            <h3 className="text-xl mb- text-gold">Our Process</h3>
-            <ul className="space-y-2 text-md">
+            <h3 className="text-xl text-gold mt-2">Our Process</h3>
+            <ul ref={processRef} className="space-y-2 text-md">
               {selectedService.process.map((step, index) => (
                 <li key={index} className="flex items-center text-blue">
                   <GiPentarrowsTornado className="text-gold mr-2" />
-                  {step}
+                  <span className="process-text">{step}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <button className="mt-2 self-start bg-blue hover:bg-gold px-6 py-2 rounded text-gold hover:text-blue hover:font-bold border-1 hover:border-blue font-Sans">
+
+          <button className="mt-2 self-start bg-gold hover:bg-chitu px-6 py-2 rounded text-blue hover:text-gold hover:font-bold border-1 hover:border-gold font-Sans">
             <Link to={`/services/${selectedService.slug}`}>
               {selectedService.title}
             </Link>

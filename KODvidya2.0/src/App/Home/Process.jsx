@@ -64,7 +64,7 @@ const SoftwareDevelopmentProcess = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top center",
-          end: "+=300",
+          end: "+=100",
           scrub: 0.1,
           pin: headingRef.current,
           pinSpacing: true,
@@ -120,7 +120,7 @@ const SoftwareDevelopmentProcess = () => {
             </h2>
           </div>
 
-          <div className="flex justify-center md:justify-end items-center">
+          <div className="flex justify-center md:justify-end mt-4 items-center">
             <p
               ref={paraRef}
               className="text-2xl font-Sans"

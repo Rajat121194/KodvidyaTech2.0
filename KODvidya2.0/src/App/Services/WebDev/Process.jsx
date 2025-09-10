@@ -13,37 +13,37 @@ const services = [
     title: "Business Analyst",
     description:
       "We carefully analyse all requirements and give our clients a thorough scope of Work (SOW) that outlines the whole project schedule and guarantees organised and transparent planning.",
-    icon: <FaBrain className="text-4xl text-sky-600" />,
+    icon: <FaBrain className="text-4xl text-gold" />,
   },
   {
     title: "UI/UX Design",
     description:
       "After the SOW is approved, our team works quickly to efficiently produce designs that meet the needs of the client, and share each screen for review.",
-    icon: <FaPaintBrush className="text-4xl text-sky-600" />,
+    icon: <FaPaintBrush className="text-4xl text-gold" />,
   },
   {
     title: "Architecture",
     description:
       "To ensure that the business logic is implemented in a complete and feasible manner, our team of committed solution architects carefully plans the functional components and chooses the best technology.",
-    icon: <FaCubes className="text-4xl text-sky-600" />,
+    icon: <FaCubes className="text-4xl text-gold" />,
   },
   {
     title: "Front End Development",
     description:
       "After finalising UI/UX design, our front-end team expertly translates Figma designs into development-ready assets using JavaScript frameworks like React.js, Next.js, Vue.js, and Angular.",
-    icon: <FaCode className="text-4xl text-sky-600" />,
+    icon: <FaCode className="text-4xl text-gold" />,
   },
   {
     title: "Back End Development",
     description:
       "Using strong frameworks for effective coding in.NET, Java, Python, Node.js, PHP, and Go, our back-end developers carefully build the business logic of your online platform.",
-    icon: <FaServer className="text-4xl text-sky-600" />,
+    icon: <FaServer className="text-4xl text-gold" />,
   },
   {
     title: "Testing & QA",
     description:
       "We make sure your web solution runs as swiftly, easily, and securely as possible. To provide a trustworthy and seamless user experience, our knowledgeable testing engineers carefully examine these element.",
-    icon: <FaCheckCircle className="text-4xl text-sky-600" />,
+    icon: <FaCheckCircle className="text-4xl text-gold" />,
   },
 ];
 

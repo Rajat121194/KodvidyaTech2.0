@@ -40,20 +40,19 @@ export default function DropIdeaSection() {
   ];
 
   const gradients = [
-    "from-white to-sky-600",
-    "from-sky-600 to-white",
-    "from-white via-sky-50 to-sky-600",
-    "from-white via-sky-100 to-sky-600",
-    "from-white via-sky-200 to-sky-600",
-    "from-sky-50 via-white to-sky-600",
-    "from-sky-100 via-white to-sky-600",
-    "from-white via-sky-300 to-sky-600",
-    "from-sky-200 via-white to-sky-600",
-    "from-white via-sky-400 to-sky-600",
-    "from-sky-300 via-white to-sky-600",
-    "from-sky-400 via-white to-sky-600",
+    "from-white to-[#f7bc00]",
+    "from-[#f7bc00] to-white",
+    "from-white via-[#f7bc00] to-[#f7bc00]",
+    "from-[#f7bc00] via-white to-[#f7bc00]",
+    "from-white via-[#f7bc00] to-white",
+    "from-[#f7bc00] via-[#f7bc00] to-white",
+    "from-white via-[#f7bc00] to-[#f7bc00]",
+    "from-[#f7bc00] via-white to-[#f7bc00]",
+    "from-white via-[#f7bc00] to-white",
+    "from-[#f7bc00] via-[#f7bc00] to-white",
+    "from-white via-[#f7bc00] to-[#f7bc00]",
+    "from-[#f7bc00] via-white to-[#f7bc00]",
   ];
-
   return (
     <>
       <style>{`

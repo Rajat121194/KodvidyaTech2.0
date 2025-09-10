@@ -12,10 +12,12 @@ const highlights = [
 
 export default function HeroRotator() {
   const [index, setIndex] = useState(0);
+  const [showLogin, setShowLogin] = useState(false); // 🔹 Popup toggle
 
   // GSAP Refs
   const glowRef = useRef(null);
   const containerRef = useRef(null);
+  const popupRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(
@@ -27,6 +29,7 @@ export default function HeroRotator() {
 
   const { title, color } = highlights[index];
 
+  // GSAP Glow Effects
   useEffect(() => {
     const glow = glowRef.current;
     const container = containerRef.current;
@@ -89,6 +92,37 @@ export default function HeroRotator() {
     };
   }, []);
 
+  // GSAP Popup Animation
+  useEffect(() => {
+    if (popupRef.current) {
+      if (showLogin) {
+        // Opening animation
+        gsap.fromTo(
+          popupRef.current,
+          { scale: 0, opacity: 0, y: 50, x: 50 },
+          {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            x: 0,
+            duration: 0.5,
+            ease: "power3.out",
+          }
+        );
+      } else {
+        // Closing animation
+        gsap.to(popupRef.current, {
+          scale: 0,
+          opacity: 0,
+          y: 50,
+          x: 50,
+          duration: 0.4,
+          ease: "power3.in",
+        });
+      }
+    }
+  }, [showLogin]);
+
   return (
     <div className="relative flex flex-col md:flex-row items-center bg-kalu/10 justify-between min-h-[80vh] overflow-hidden px-5 py-8">
       {/* Video Background */}
@@ -99,7 +133,7 @@ export default function HeroRotator() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover -z-10"
       >
-        <source src="/src/assets/videos/you.mp4" type="video/mp4" />
+        <source src="/src/assets/videos/herobg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -160,6 +194,73 @@ export default function HeroRotator() {
           </Link>
         </div>
       </div>
+
+      {/* Floating Transparent Button - Bottom Right */}
+      {!showLogin && (
+        <div className="fixed bottom-5 right-10 z-50">
+          <button
+            onClick={() => setShowLogin(true)}
+            className="px-6 py-3 rounded-full border border-blue bg-transparent 
+                       text-gold font-semibold tracking-wide backdrop-blur-md
+                       hover:bg-gold/10 hover:border-gold hover:text-blue 
+                       transition-all duration-300 shadow-lg"
+          >
+            Workplace Login
+          </button>
+        </div>
+      )}
+
+      {/* 🔹 Popup Modal */}
+      {showLogin && (
+        <div className="fixed bottom-5 right-10 z-[100]">
+          <div
+            ref={popupRef}
+            className="bg-kalu/80 rounded-2xl shadow-2xl p-6 w-[350px] relative origin-bottom-right"
+          >
+            <button
+              onClick={() => setShowLogin(false)}
+              className="absolute top-2 right-2 text-gold hover:text-red-500"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-xl font-semibold text-center text-gold mb-4">
+              Workplace Login
+            </h2>
+
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gold">
+                  ID
+                </label>
+                <input
+                  type="text"
+                  className="w-full mt-1 px-3 py-2 border border-chitu rounded-lg focus:ring-2 focus:ring-gold focus:outline-none placeholder:text-chitu"
+                  placeholder="Enter your ID"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gold">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="w-full mt-1 px-3 py-2 border border-chitu rounded-lg focus:ring-2 focus:ring-gold focus:outline-none placeholder:text-chitu"
+                  placeholder="Enter password"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2 bg-gold text-white rounded-lg font-semibold hover:bg-blue transition-all duration-300"
+              >
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

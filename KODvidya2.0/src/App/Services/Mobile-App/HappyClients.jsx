@@ -16,7 +16,7 @@ const HappyClients = () => {
           business.
         </p>
         <Link to="/contact">
-          <button className="bg-white hover:bg-sky-600 hover:text-white text-sky-600 border-1 hover:border-white hover:font-bold py-2 px-6 rounded-lg transition duration-300">
+          <button className="bg-gold hover:bg-chitu hover:text-gold text-blue border-1 hover:border-blue hover:font-bold py-2 px-6 rounded-lg transition duration-300">
             Get Started
           </button>
         </Link>

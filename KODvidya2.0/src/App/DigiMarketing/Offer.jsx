@@ -40,22 +40,22 @@ const services = [
 ];
 
 const bgColors = [
-  "bg-sky-100",
-  "bg-sky-100",
-  "bg-sky-100",
-  "bg-sky-100",
-  "bg-sky-100",
-  "bg-sky-100",
+  "bg-gold",
+  "bg-gold",
+  "bg-gold",
+  "bg-gold",
+  "bg-gold",
+  "bg-gold",
 ];
 
 export default function Services() {
   return (
     <div className="px-4 py-16 max-w-6xl mx-auto">
       <div className="mb-12 text-center">
-        <h2 className="text-4xl md:text-6xl font-Bebas text-sky-600 mb-1">
+        <h2 className="text-4xl md:text-6xl font-Bebas text-gold mb-1">
           What We offer in Digital Marketing Services ?
         </h2>
-        <p className="text-black font-Sans text-xl max-w-2xl mx-auto">
+        <p className="text-blue font-Sans text-xl max-w-2xl mx-auto">
           Digital marketing cannot be limited to a single strategy...
         </p>
       </div>
@@ -64,17 +64,13 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className={`rounded-xl p-3 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 border border-sky-600 ${
+            className={`rounded-xl p-3 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 border border-blue ${
               bgColors[index % bgColors.length]
             }`}
           >
             <div className="text-4xl mb-2">{service.icon}</div>
-            <h3 className="font-Bebas text-2xl text-sky-600">
-              {service.title}
-            </h3>
-            <p className="text-black font-Sans text-md">
-              {service.description}
-            </p>
+            <h3 className="font-Bebas text-2xl text-blue">{service.title}</h3>
+            <p className="text-blue font-Sans text-md">{service.description}</p>
           </div>
         ))}
       </div>

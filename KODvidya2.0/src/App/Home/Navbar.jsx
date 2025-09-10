@@ -81,20 +81,21 @@ function Navbar() {
           <img src={logo} alt="Logo" className="h-12 w-auto object-contain" />
         </div>
 
-        {/* Social Icons (with hover spread effect) */}
-        <div className="flex items-center -space-x-8 group transition-all duration-500">
+        <div className="flex items-center -space-x-4 group transition-all duration-500">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/codemechanisminfotech/"
             target="_blank"
             rel="noreferrer"
-            className="transform transition-all z-10 duration-500 group-hover:-translate-x-4"
+            className="transform transition-all  duration-500 
+              animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0s]"
           >
             <img src={ig} alt="Instagram" className="h-10 w-12" />
           </a>
 
           <a
-            href="mailto:yourcompany@gmail.com"
-            className="transform transition-all z-90 duration-500 "
+            href="mailto:rockyrangra1993@gmail.com"
+            className="transform transition-all  duration-500
+              animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.3s]"
           >
             <img src={gmail} alt="Gmail" className="h-12 w-11" />
           </a>
@@ -103,7 +104,8 @@ function Navbar() {
             href="https://linkedin.com"
             target="_blank"
             rel="noreferrer"
-            className="transform transition-all z-10 duration-500 group-hover:translate-x-4"
+            className="transform transition-all  duration-500
+              animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.6s]"
           >
             <img src={linkedin} alt="LinkedIn" className="h-10 w-12" />
           </a>
@@ -112,7 +114,7 @@ function Navbar() {
             onClick={() => alert("Open Login Form")}
             className="ml-12 bg-gold text-chitu px-4 py-2 rounded-full hover:bg-chitu hover:text-gold hover:border-gold border transition"
           >
-            Login
+            Hire Us
           </button>
         </div>
       </div>

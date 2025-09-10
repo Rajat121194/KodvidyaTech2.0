@@ -44,7 +44,7 @@ const services = [
 
 const OnlineMarketing = () => {
   return (
-    <div className="py-15 px-20 bg-sky-600/10 min-h-screen">
+    <div className="py-15 px-20 bg-gold/10 min-h-screen">
       <style>{`
         @keyframes vibrate {
           0%, 100% { transform: translateX(0); }
@@ -55,16 +55,17 @@ const OnlineMarketing = () => {
         }
         .hover\\:vibrate:hover {
           animation: vibrate 0.5s linear;
-          box-shadow: 0 4px 20px rgba(2, 132, 199, 1); 
+          box-shadow: 0 4px 20px rgba(2, 90, 153, 1);
+
         }
       `}</style>
 
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-6xl font-Bebas text-black">
+        <h2 className="text-6xl font-Bebas text-blue">
           Why choose us for{" "}
-          <span className="text-sky-600">Your Internet Marketing?</span>
+          <span className="text-gold">Your Internet Marketing?</span>
         </h2>
-        <p className="text-black font-Sans text-xl mb-10 max-w-3xl">
+        <p className="text-blue font-Sans text-xl mb-10 max-w-3xl">
           We at CodeMechanism Infotech offer complete end-to-end solutions. Our
           team of professionals specializes in providing businesses with
           targeted advertising solutions that increase customer retention rates
@@ -75,15 +76,15 @@ const OnlineMarketing = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white p-3 rounded-xl shadow-md border transition-all duration-200 hover:vibrate"
+              className="bg-chitu p-3 rounded-xl shadow-md border border-gold transition-all duration-200 hover:vibrate"
             >
-              <div className="flex justify-center items-center text-sky-600 text-6xl">
+              <div className="flex justify-center items-center text-gold text-6xl">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-Bebas text-sky-600 text-center">
+              <h3 className="text-xl font-Bebas text-blue text-center">
                 {service.title}
               </h3>
-              <p className="text-sm text-black text-center">
+              <p className="text-sm text-blue text-center">
                 {service.description}
               </p>
             </div>
