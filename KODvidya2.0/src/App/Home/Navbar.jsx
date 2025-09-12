@@ -75,7 +75,7 @@ function Navbar() {
   return (
     <>
       {/* Top Bar - Desktop */}
-      <div className="hidden lg:flex fixed top-0 left-0 w-full z-[1000] bg-kalu/10 backdrop-blur-md px-8 lg:px-20 justify-between items-center shadow-md h-16">
+      <div className="hidden lg:flex fixed top-0 left-0 w-full z-[1000] bg-kalu/10 backdrop-blur-md px-8 lg:px-23 justify-between items-center shadow-md h-16">
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <img src={logo} alt="Logo" className="h-12 w-auto object-contain" />

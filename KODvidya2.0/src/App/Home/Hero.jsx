@@ -124,7 +124,7 @@ export default function HeroRotator() {
   }, [showLogin]);
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center bg-kalu/10 justify-between min-h-[80vh] overflow-hidden px-5 py-8">
+    <div className="relative flex flex-col md:flex-row items-center justify-between min-h-[80vh] overflow-hidden px-5 py-8">
       {/* Video Background */}
       <video
         autoPlay
@@ -200,9 +200,9 @@ export default function HeroRotator() {
         <div className="fixed bottom-5 right-10 z-50">
           <button
             onClick={() => setShowLogin(true)}
-            className="px-6 py-3 rounded-full border border-blue bg-transparent 
+            className="px-6 py-3 rounded-full border border-blue bg-transparent
                        text-gold font-semibold tracking-wide backdrop-blur-md
-                       hover:bg-gold/10 hover:border-gold hover:text-blue 
+                       hover:bg-gold/10 hover:border-gold hover:text-blue
                        transition-all duration-300 shadow-lg"
           >
             Workplace Login
@@ -212,7 +212,7 @@ export default function HeroRotator() {
 
       {/* 🔹 Popup Modal */}
       {showLogin && (
-        <div className="fixed bottom-5 right-10 z-[100]">
+        <div className="fixed bottom-15 right-10 z-[100]">
           <div
             ref={popupRef}
             className="bg-kalu/80 rounded-2xl shadow-2xl p-6 w-[350px] relative origin-bottom-right"

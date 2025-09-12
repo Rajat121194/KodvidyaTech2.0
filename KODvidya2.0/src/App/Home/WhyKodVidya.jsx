@@ -102,7 +102,7 @@ const WhyCodeMechanism = () => {
               ref={(el) => (cardsRef.current[index] = el)}
               className="group rounded-2xl p-6 shadow-md bg-[#ffffff] text-blue 
                          transform transition duration-300 hover:scale-105 
-                         hover:shadow-xl hover:bg-gold"
+                         hover:shadow-xl hover:bg-gold cursor-crosshair"
             >
               <div className="mb-3">
                 <Icon className="text-blue text-4xl transition-colors duration-300 group-hover:text-white" />

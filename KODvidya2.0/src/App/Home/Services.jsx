@@ -27,7 +27,22 @@ const services = [
   },
   {
     id: 2,
-    title: "Web Development",
+    title: "UX/UI Design",
+    slug: "ui-ux-design",
+    icon: <FaUikit size={22} />,
+    description:
+      "UI/UX Design is the king of any platform. Apart from engaging and unique design we also focus on User friendly design. We create designs that are dynamic, persuasive, and intuitive using the most advanced UI/UX approaches...",
+    process: [
+      "Responsive Web App Design",
+      "(SAAS) UI/UX Design",
+      "Ecommerce Website Design",
+      "Website Redesign",
+      "Mobile App Design",
+    ],
+  },
+  {
+    id: 3,
+    title: "Web Apps",
     slug: "web-development",
     icon: <HiGlobeAlt size={22} />,
     description:
@@ -41,8 +56,8 @@ const services = [
     ],
   },
   {
-    id: 3,
-    title: "Mobile App",
+    id: 4,
+    title: "Mobile Apps",
     slug: "mobile-apps",
     icon: <IoPhonePortrait size={22} />,
     description:
@@ -57,8 +72,8 @@ const services = [
     ],
   },
   {
-    id: 4,
-    title: "TV/OTT App",
+    id: 5,
+    title: "TV/OTT Apps",
     slug: "web-development",
     icon: <BsFillTvFill size={22} />,
     description:
@@ -72,7 +87,7 @@ const services = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "AR/VR Development",
     slug: "web-development",
     icon: <BsHeadsetVr size={22} />,
@@ -87,21 +102,7 @@ const services = [
       "AR/VR App Maintenance",
     ],
   },
-  {
-    id: 6,
-    title: "UX/UI Design",
-    slug: "ui-ux-design",
-    icon: <FaUikit size={22} />,
-    description:
-      "UI/UX Design is the king of any platform. Apart from engaging and unique design we also focus on User friendly design. We create designs that are dynamic, persuasive, and intuitive using the most advanced UI/UX approaches...",
-    process: [
-      "Responsive Web App Design",
-      "(SAAS) UI/UX Design",
-      "Ecommerce Website Design",
-      "Website Redesign",
-      "Mobile App Design",
-    ],
-  },
+
   {
     id: 7,
     title: "Testing & QA",

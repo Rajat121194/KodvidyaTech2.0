@@ -95,7 +95,7 @@ export default function ContactPage() {
                 href="mailto:rockyrangra1993@gmail.com"
                 className="text-blue font-Sans"
               >
-                rockyrangra1993@gmail.com
+                info@codemechanism.com
               </a>
             </p>
           </div>

@@ -57,7 +57,7 @@ export default function FooterSection() {
                   href="mailto:rockyrangra1993@gmail.com"
                   className="text-blue font-Sans text-sm md:text-base hover:underline"
                 >
-                  rockyrangra1993@gmail.com
+                  info@codemechanism.com
                 </a>
               </div>
 
