@@ -48,7 +48,7 @@ export default function WelcomeOverlay({ isVisible }) {
       />
 
       {/* Bottom Left Loading Text with scramble animation */}
-      <p className="absolute bottom-4 left-20 text-gold text-xl text-md tracking-widest font-Sans">
+      <p className="absolute bottom-4 left-20 text-blue text-xl text-md tracking-widest font-Sans">
         {displayText}
       </p>
     </div>

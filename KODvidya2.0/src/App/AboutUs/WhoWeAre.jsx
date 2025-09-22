@@ -21,7 +21,7 @@ const WhoWeAre = () => {
       <div className="relative z-10 text-right mr-10 mt-10">
         <h1 className="text-6xl text-gold font-Bebas">Who We Are</h1>
         <p className="text-xl tracking-tight font-Sans text-blue">
-          CodeMechanism Technologies
+          CodeMechanism Infotech
         </p>
       </div>
 

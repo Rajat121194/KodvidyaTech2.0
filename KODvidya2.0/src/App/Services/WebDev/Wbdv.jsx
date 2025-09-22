@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import webImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/web-dev.png";
 
 const WebDevSection = () => {
   return (
-    <div className="relative w-full bg-gold/10 py-45 px-10 md:px-20 overflow-hidden">
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
-        <div className="md:w-1/2 mb-10 md:mb-0">
+    <div className="relative w-full bg-gold/10 py-34 px-10 md:px-20 overflow-hidden">
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+        {/* Left content */}
+        <div className="md:w-1/2">
           <h2 className="text-6xl md:text-6xl font-Bebas text-gold">
             Web Development <br /> Services
           </h2>
@@ -20,6 +22,15 @@ const WebDevSection = () => {
               Get In touch
             </button>
           </Link>
+        </div>
+
+        {/* Right image */}
+        <div className="md:w-1/2 flex justify-center">
+          <img
+            src={webImage}
+            alt="Web Development Services"
+            className="max-w-full h-auto rounded-lg "
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "/src/assets/pictures/logo.png";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import logo from "/src/assets/pictures/slogo.png";
 import ig from "/src/assets/pictures/ingr.png";
 import linkedin from "/src/assets/pictures/lnkdin.png";
 import gmail from "/src/assets/pictures/maile.png";
@@ -9,12 +11,21 @@ function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showSecondBar, setShowSecondBar] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHireFormOpen, setIsHireFormOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    message: "",
+  });
 
   const lastScrollY = useRef(0);
   const mobileMenuRef = useRef(null);
   const location = useLocation();
 
-  // Scroll behavior (only for desktop second bar)
+  // Scroll behavior for second bar
   const controlSecondBar = () => {
     const currentScrollY = window.scrollY;
     setShowSecondBar(
@@ -28,12 +39,13 @@ function Navbar() {
     return () => window.removeEventListener("scroll", controlSecondBar);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent body scroll when menus or modal open
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
-  }, [isMobileMenuOpen]);
+    document.body.style.overflow =
+      isMobileMenuOpen || isHireFormOpen ? "hidden" : "auto";
+  }, [isMobileMenuOpen, isHireFormOpen]);
 
-  // Click outside handler
+  // Click outside mobile menu
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -52,6 +64,17 @@ function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobileMenuOpen]);
 
+  // Form handlers
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    // TODO: connect to Nodemailer backend here
+    setIsHireFormOpen(false);
+  };
+
   const navItems = [
     { label: "Home", path: "/" },
     { label: "About Us", path: "/about" },
@@ -66,7 +89,7 @@ function Navbar() {
     { label: "Web Development", path: "/services/web-development" },
     { label: "Mobile Apps", path: "/services/mobile-apps" },
     { label: "UI/UX Design", path: "/services/ui-ux-design" },
-    { label: "Digital Marketing", path: "/services/digital-marketing" },
+    { label: "Internet Marketing", path: "/services/internet-marketing" },
   ];
 
   const getLinkClass = (path) =>
@@ -77,49 +100,47 @@ function Navbar() {
       {/* Top Bar - Desktop */}
       <div className="hidden lg:flex fixed top-0 left-0 w-full z-[1000] bg-kalu/10 backdrop-blur-md px-8 lg:px-23 justify-between items-center shadow-md h-16">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <img src={logo} alt="Logo" className="h-12 w-auto object-contain" />
+        <div className="flex items-center space-x-3 cursor-pointer">
+          <Link to="/">
+            <img src={logo} alt="Logo" className="h-15 w-auto object-contain" />
+          </Link>
         </div>
 
         <div className="flex items-center -space-x-4 group transition-all duration-500">
           <a
-            href="https://www.instagram.com/codemechanisminfotech/"
+            href="https://www.instagram.com/codemechanism_infotech/"
             target="_blank"
             rel="noreferrer"
-            className="transform transition-all  duration-500 
-              animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0s]"
+            className="animate-[bounce_1.5s_ease-in-out_infinite]"
           >
             <img src={ig} alt="Instagram" className="h-10 w-12" />
           </a>
-
           <a
             href="mailto:rockyrangra1993@gmail.com"
-            className="transform transition-all  duration-500
-              animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.3s]"
+            className="animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.3s]"
           >
             <img src={gmail} alt="Gmail" className="h-12 w-11" />
           </a>
-
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/codemechanism/"
             target="_blank"
             rel="noreferrer"
-            className="transform transition-all  duration-500
-              animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.6s]"
+            className="animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.6s]"
           >
             <img src={linkedin} alt="LinkedIn" className="h-10 w-12" />
           </a>
 
+          {/* ✅ Hire Us opens modal */}
           <button
-            onClick={() => alert("Open Login Form")}
-            className="ml-12 bg-gold text-chitu px-4 py-2 rounded-full hover:bg-chitu hover:text-gold hover:border-gold border transition"
+            onClick={() => setIsHireFormOpen(true)}
+            className="ml-12 bg-gold text-chitu px-4 py-2 rounded-full hover:bg-chitu cursor-pointer hover:text-gold hover:border-gold border transition"
           >
             Hire Us
           </button>
         </div>
       </div>
 
-      {/* Second Bar - Desktop */}
+      {/* Second Bar */}
       <div
         className={`hidden lg:flex fixed left-0 w-full z-[999] bg-gold/10 backdrop-blur-md px-20 font-Sans font-semibold transition-transform duration-500 ease-in-out ${
           showSecondBar ? "translate-y-[60px]" : "translate-y-0"
@@ -181,10 +202,7 @@ function Navbar() {
       {/* Mobile Navbar */}
       <div className="lg:hidden fixed top-0 left-0 w-full z-[1000] bg-chitu/60 backdrop-blur-md shadow-md">
         <div className="flex justify-between items-center h-16 px-4">
-          {/* Logo */}
           <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
-
-          {/* Hamburger */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gold font-extrabold text-2xl"
@@ -193,7 +211,6 @@ function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
           className={`${
@@ -246,6 +263,72 @@ function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* ✅ Hire Us Modal Form */}
+      {isHireFormOpen && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg p-6 relative">
+            <button
+              onClick={() => setIsHireFormOpen(false)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-xl"
+            >
+              ✖
+            </button>
+            <h2 className="text-2xl font-bold text-center mb-4 text-blue">
+              Hire Us
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
+                required
+              />
+              <input
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
+              />
+              <PhoneInput
+                country={"in"}
+                value={formData.phone}
+                onChange={(phone) => setFormData({ ...formData, phone })}
+                inputClass="!w-full !h-11 !text-base"
+                containerClass="!w-full"
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows="3"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
+              />
+              <button
+                type="submit"
+                className="w-full bg-gold text-chitu py-2 rounded-md font-bold hover:bg-chitu hover:text-gold border hover:border-gold transition"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

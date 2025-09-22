@@ -28,7 +28,7 @@ const UiUxDesign = () => {
           <img
             src={uiUxImage}
             alt="UI UX Design Illustration"
-            className="w-full max-w-md mx-auto drop-shadow-lg"
+            className="w-full max-w-md mx-auto shadow-gold shadow-2xl rounded-4xl"
           />
         </div>
       </div>

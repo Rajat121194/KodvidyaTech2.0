@@ -75,7 +75,7 @@ const WhyCodeMechanism = () => {
   return (
     <div className="max-w-7xl mx-auto bg-gold/10 px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
       {/* Left Section */}
-      <div ref={leftRef} className="flex flex-col items-start space-y-3">
+      <div ref={leftRef} className="flex flex-col items-start space-y-1">
         <h2 className="text-6xl text-gold font-Bebas">
           Why CodeMechanism Infotech...?
         </h2>
@@ -85,15 +85,14 @@ const WhyCodeMechanism = () => {
           marketing services. Connect us to get exceptional results that drive
           your business onward.
         </p>
-        <img
-          src={TeamImage}
-          alt="Team"
-          className="w-110 h-60 rounded-2xl shadow-lg"
-        />
+        <img src={TeamImage} alt="Team" className="w-110 h-70 rounded-2xl" />
       </div>
 
       {/* Right Section (Features) */}
-      <div ref={rightRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div
+        ref={rightRef}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12"
+      >
         {features.map((item, index) => {
           const Icon = item.icon;
           return (

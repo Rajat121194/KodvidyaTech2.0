@@ -83,7 +83,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gold/10 flex flex-col lg:flex-row items-start justify-center px-14 py-28 gap-2">
+    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-start justify-center px-14 py-28 gap-2">
       <div className="flex-1 text-center lg:text-left space-y-10 mt-12">
         <h2 className="text-6xl font-Bebas text-gold mb-4">Contact Us</h2>
 

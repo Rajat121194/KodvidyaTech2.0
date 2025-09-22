@@ -64,7 +64,7 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className={`rounded-xl p-3 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 border border-blue ${
+            className={`rounded-xl p-4 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 border border-blue ${
               bgColors[index % bgColors.length]
             }`}
           >

@@ -265,7 +265,7 @@ const App = () => {
                   alt={service.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center cursor-grabbing pb-4">
                   <span className="text-gold text-xl font-Bebas px-2 py-1 rounded shadow">
                     {service.name}
                   </span>

@@ -72,7 +72,7 @@ const WebServices = () => {
         {services.map((service, index) => (
           <div
             key={index}
-            className={`group border-1 border-gold rounded-xl p-1 text-blue font-Sans transition-all duration-300 transform 
+            className={`group p-4 border-1 border-gold rounded-xl p-1 text-blue font-Sans transition-all duration-300 transform 
               ${service.bgColor} hover:scale-102 active:scale-100`}
           >
             <div className="mb-4 text-blue font-Sans">{service.icon}</div>

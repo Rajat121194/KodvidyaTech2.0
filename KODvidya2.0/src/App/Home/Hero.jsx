@@ -201,9 +201,9 @@ export default function HeroRotator() {
           <button
             onClick={() => setShowLogin(true)}
             className="px-6 py-3 rounded-full border border-blue bg-transparent
-                       text-gold font-semibold tracking-wide backdrop-blur-md
+                       text-blue font-semibold tracking-wide backdrop-blur-md
                        hover:bg-gold/10 hover:border-gold hover:text-blue
-                       transition-all duration-300 shadow-lg"
+                       transition-all duration-300 shadow-lg cursor-pointer"
           >
             Workplace Login
           </button>

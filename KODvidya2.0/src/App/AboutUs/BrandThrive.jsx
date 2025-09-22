@@ -34,7 +34,7 @@ const HeroSection = () => {
       </section>
 
       <section className="bg-chitu py-12">
-        <div className="container mx-auto px-8 md:px-40 font-semibold flex flex-col md:flex-row items-center justify-between text-left">
+        <div className="container mx-auto px-8 md:px-40 flex flex-col md:flex-row items-center justify-between text-left">
           <div className="mb-6 md:mb-0 md:max-w-xl">
             <h2 className="text-6xl md:text-6xl mb-3 font-Bebas text-gold">
               Let's Work Together.

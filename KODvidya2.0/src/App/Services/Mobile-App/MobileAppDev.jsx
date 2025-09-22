@@ -30,7 +30,7 @@ const MobileAppSection = () => {
         <img
           src={MobileAppImg}
           alt="Mobile App Illustration"
-          className="w-[80%] sm:w-[300px] md:w-[400px] lg:w-[500px] drop-shadow-2xl"
+          className="w-[80%] sm:w-[300px] md:w-[400px] lg:w-[500px] rounded-4xl"
         />
       </div>
     </section>

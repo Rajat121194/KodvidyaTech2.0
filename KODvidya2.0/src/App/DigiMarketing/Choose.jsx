@@ -20,8 +20,8 @@ const WhyChooseUs = () => {
             Why choose us for You Online Marketing?
           </h2>
           <p className="text-blue text-xl font-Sans mb-3">
-            We at KodVidya Technologies offer complete end-to-end solutions. Our
-            team of professionals specializes in providing businesses with
+            We at CodeMechanism Infotech offer complete end-to-end solutions.
+            Our team of professionals specializes in providing businesses with
             targeted advertising solutions that increase customer retention
             rates and optimize conversion rates.
           </p>

@@ -67,9 +67,9 @@ export default function WhyChooseUs() {
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`group border rounded-xl p-1 shadow-sm transition-all duration-300 transform hover:scale-[0.97] ${card.color}`}
+            className={`group border rounded-xl p-4 shadow-sm transition-all duration-300 transform hover:scale-[0.97] ${card.color}`}
           >
-            <div className="text-5xl p-1 text-gold rounded-full inline-block group-hover:scale-110 transition">
+            <div className="text-5xl  text-gold rounded-full inline-block group-hover:scale-110 transition">
               {card.icon}
             </div>
             <h3 className="font-Bebas text-2xl text-gold">{card.title}</h3>

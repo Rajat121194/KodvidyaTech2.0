@@ -64,7 +64,7 @@ export default function FooterSection() {
               {/* SOCIAL ICONS */}
               <div className="flex justify-center md:justify-start space-x-3 mt-2">
                 <a
-                  href="https://www.facebook.com/Kodvidya/"
+                  href="https://x.com/CodeMechanism"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -75,7 +75,7 @@ export default function FooterSection() {
                   />
                 </a>
                 <a
-                  href="https://in.linkedin.com/company/kodvidyatech"
+                  href="https://www.linkedin.com/company/codemechanism/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -86,7 +86,7 @@ export default function FooterSection() {
                   />
                 </a>
                 <a
-                  href="https://www.instagram.com/codemechanisminfotech/"
+                  href="https://www.instagram.com/codemechanism_infotech/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
