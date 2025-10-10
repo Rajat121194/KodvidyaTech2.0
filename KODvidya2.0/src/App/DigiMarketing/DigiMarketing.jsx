@@ -1,12 +1,13 @@
 import React from "react";
-import Navbar from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/Home/Navbar.jsx";
-import DigiMar from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/DigiMarketing/DigiMar.jsx";
-import Offer from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/DigiMarketing/Offer.jsx";
-import Go from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/DigiMarketing/Go.jsx";
-import Choose from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/DigiMarketing/Choose.jsx";
-import Marketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/DigiMarketing/Marketing.jsx";
-import DropUs from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/Home/DropUs.jsx";
-import Footer from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/Home/Footer.jsx";
+import Navbar from "../Home/Navbar.jsx";
+import DigiMar from "./DigiMar.jsx";
+import Offer from "./Offer.jsx";
+import Go from "./Go.jsx";
+import Choose from "./Choose.jsx";
+import Marketing from "./Marketing.jsx";
+import OurCaseStudies from "../Portfolio/OurCaseStudies";
+import DropUs from "../Home/DropUs.jsx";
+import Footer from "../Home/Footer.jsx";
 
 function UIUXDesign() {
   return (
@@ -17,6 +18,7 @@ function UIUXDesign() {
       <Go />
       <Choose />
       <Marketing />
+      <OurCaseStudies />
       <DropUs />
       <Footer />
     </>

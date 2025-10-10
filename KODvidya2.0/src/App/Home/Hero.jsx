@@ -1,35 +1,38 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import gsap from "gsap";
-import { getColor } from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/utils/getColor.js";
+import { getColor } from "../../utils/getColor.js";
 
-// Example highlights
 const highlights = [
   { title: "Mobile-Apps Development", color: "text-gold" },
   { title: "Web Development", color: "text-gold" },
-  { title: "Internet Marketing", color: "text-gold" },
+  { title: "Internet-Marketing", color: "text-gold" },
 ];
 
-export default function HeroRotator() {
+export default function Hero({ setToken }) {
   const [index, setIndex] = useState(0);
-  const [showLogin, setShowLogin] = useState(false); // 🔹 Popup toggle
+  const [showLogin, setShowLogin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // GSAP Refs
   const glowRef = useRef(null);
   const containerRef = useRef(null);
   const popupRef = useRef(null);
+  const navigate = useNavigate();
 
+  // Highlight rotation
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((p) => (p + 1) % highlights.length),
-      1000
+      1500
     );
     return () => clearInterval(interval);
   }, []);
 
   const { title, color } = highlights[index];
 
-  // GSAP Glow Effects
+  // GSAP glow on button
   useEffect(() => {
     const glow = glowRef.current;
     const container = containerRef.current;
@@ -39,43 +42,16 @@ export default function HeroRotator() {
       const rect = container.getBoundingClientRect();
       const offsetX = e.clientX - rect.left;
       const centerX = rect.width / 2;
-
-      const leftIntensity = Math.max(0, 1 - offsetX / centerX);
-      const rightIntensity = Math.max(0, offsetX / centerX - 1);
-
       gsap.to(glow, {
         x: offsetX - centerX,
         opacity: 1,
         duration: 0.3,
         ease: "power3.out",
       });
-
-      if (leftIntensity > 0) {
-        gsap.to(container, {
-          boxShadow: `${-leftIntensity * 40}px 0px ${
-            40 + leftIntensity * 40
-          }px ${getColor("gold")}`,
-          duration: 0.3,
-          ease: "power3.out",
-        });
-      } else if (rightIntensity > 0) {
-        gsap.to(container, {
-          boxShadow: `${rightIntensity * 40}px 0px ${
-            40 + rightIntensity * 40
-          }px ${getColor("gold")}`,
-          duration: 0.3,
-          ease: "power3.out",
-        });
-      }
     };
 
     const handleMouseLeave = () => {
-      gsap.to(glow, {
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-      });
-
+      gsap.to(glow, { opacity: 0, duration: 1, ease: "power2.out" });
       gsap.to(container, {
         boxShadow: `0px 0px 20px ${getColor("gold")}`,
         duration: 0.8,
@@ -92,52 +68,80 @@ export default function HeroRotator() {
     };
   }, []);
 
-  // GSAP Popup Animation
+  // GSAP popup animation
   useEffect(() => {
-    if (popupRef.current) {
-      if (showLogin) {
-        // Opening animation
-        gsap.fromTo(
-          popupRef.current,
-          { scale: 0, opacity: 0, y: 50, x: 50 },
-          {
-            scale: 1,
-            opacity: 1,
-            y: 0,
-            x: 0,
-            duration: 0.5,
-            ease: "power3.out",
-          }
-        );
-      } else {
-        // Closing animation
-        gsap.to(popupRef.current, {
-          scale: 0,
-          opacity: 0,
-          y: 50,
-          x: 50,
-          duration: 0.4,
-          ease: "power3.in",
-        });
-      }
+    if (!popupRef.current) return;
+    if (showLogin) {
+      gsap.fromTo(
+        popupRef.current,
+        { scale: 0, opacity: 0, y: 50, x: 50 },
+        { scale: 1, opacity: 1, y: 0, x: 0, duration: 0.5, ease: "power3.out" }
+      );
+    } else {
+      gsap.to(popupRef.current, {
+        scale: 0,
+        opacity: 0,
+        y: 50,
+        x: 50,
+        duration: 0.4,
+        ease: "power3.in",
+      });
     }
   }, [showLogin]);
 
+  // Admin login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await fetch("http://localhost:5000/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setToken(data.token);
+        localStorage.setItem("token", data.token);
+        setShowLogin(false);
+        navigate("/admin");
+      } else {
+        alert(data.error || "Login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="relative flex flex-col md:flex-row items-center justify-between min-h-[80vh] overflow-hidden px-5 py-8">
-      {/* Video Background */}
+      {/* Mobile overlay */}
+      <div className="block md:hidden absolute inset-0 bg-chitu/10 -z-5"></div>
+
+      {/* Background videos */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+        className="hidden md:block absolute top-0 left-0 w-full h-full object-cover -z-10"
       >
         <source src="/src/assets/videos/herobg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+      </video>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="block md:hidden absolute top-0 left-0 w-full h-full object-cover -z-10"
+      >
+        <source src="/src/assets/videos/herobg-vertical.mp4" type="video/mp4" />
       </video>
 
-      {/* Content */}
+      {/* Hero content */}
       <div className="relative z-10 max-w-xl space-y-2 md:px-16 py-20">
         <h1 className="text-5xl leading-snug font-Bebas text-blue">
           A Leading <span className={`${color} text-6xl`}>{title}</span>{" "}
@@ -151,111 +155,85 @@ export default function HeroRotator() {
           meet your business's demands.
         </p>
 
-        {/* GSAP Glowing Button */}
+        {/* Schedule button */}
         <div className="relative inline-flex items-center">
           <Link
             to="/contact"
             ref={containerRef}
-            className="relative flex items-center justify-center px-10 py-2 rounded-full border border-chitu bg-chitu/10 backdrop-blur-md overflow-hidden font-Sans text-lg font-semibold tracking-wide transition-all duration-300 group"
-            style={{
-              boxShadow: `0px 0px 80px ${getColor("gold")}`,
-            }}
+            className="relative flex items-center justify-center px-10 py-2 rounded-full border border-chitu bg-chitu/10 backdrop-blur-md overflow-hidden font-Sans text-lg font-semibold transition-all duration-300 group"
+            style={{ boxShadow: `0px 0px 80px ${getColor("gold")}` }}
           >
-            {/* Glow Effect Layer */}
             <div
               ref={glowRef}
               className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0"
-            >
-              {/* Core Glow */}
-              <div
-                className="absolute h-[1000px] w-[100px] rounded-full blur-xl mix-blend-screen"
-                style={{
-                  background: `radial-gradient(circle, ${getColor(
-                    "gold"
-                  )} 0%, ${getColor("gold")} 40%, transparent 80%)`,
-                }}
-              ></div>
-
-              {/* Soft Diffused Glow */}
-              <div
-                className="absolute h-[240px] w-[100px] rounded-full blur-3xl mix-blend-screen"
-                style={{
-                  background: `radial-gradient(circle, ${getColor(
-                    "gold"
-                  )} 20%, ${getColor("gold")} 60%, transparent 100%)`,
-                }}
-              ></div>
-            </div>
-
-            {/* Button Text */}
-            <span className="relative z-10 flex items-center justify-center text-blue">
+            ></div>
+            <span className="relative z-10 text-blue">
               Schedule a Free Consultancy Meeting
             </span>
           </Link>
         </div>
       </div>
 
-      {/* Floating Transparent Button - Bottom Right */}
+      {/* Login button */}
       {!showLogin && (
         <div className="fixed bottom-5 right-10 z-50">
           <button
             onClick={() => setShowLogin(true)}
-            className="px-6 py-3 rounded-full border border-blue bg-transparent
-                       text-blue font-semibold tracking-wide backdrop-blur-md
-                       hover:bg-gold/10 hover:border-gold hover:text-blue
-                       transition-all duration-300 shadow-lg cursor-pointer"
+            className="px-6 py-3 rounded-full border border-blue bg-transparent text-blue font-semibold tracking-wide backdrop-blur-md hover:bg-gold/10 hover:border-gold hover:text-blue transition-all duration-300 shadow-lg cursor-pointer"
           >
             Workplace Login
           </button>
         </div>
       )}
 
-      {/* 🔹 Popup Modal */}
+      {/* Login popup */}
       {showLogin && (
         <div className="fixed bottom-15 right-10 z-[100]">
           <div
             ref={popupRef}
-            className="bg-kalu/80 rounded-2xl shadow-2xl p-6 w-[350px] relative origin-bottom-right"
+            className="bg-chitu/10 rounded-2xl shadow-2xl p-6 w-[350px] relative origin-bottom-right"
           >
             <button
               onClick={() => setShowLogin(false)}
-              className="absolute top-2 right-2 text-gold hover:text-red-500"
+              className="absolute text-2xl top-2 right-2 text-blue hover:text-red-500"
             >
               ✕
             </button>
-
-            <h2 className="text-xl font-semibold text-center text-gold mb-4">
+            <h2 className="text-2xl font-Bebas text-center text-blue mb-2">
               Workplace Login
             </h2>
-
-            <form className="space-y-4">
+            <form className="space-y-3" onSubmit={handleLogin}>
               <div>
-                <label className="block text-sm font-medium text-gold">
+                <label className="block ml-1 text-sm font-semibold text-blue">
                   ID
                 </label>
                 <input
                   type="text"
-                  className="w-full mt-1 px-3 py-2 border border-chitu rounded-lg focus:ring-2 focus:ring-gold focus:outline-none placeholder:text-chitu"
+                  className="w-full mt-1 px-3 py-2 border border-gold rounded-lg"
                   placeholder="Enter your ID"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-gold">
+                <label className="block text-sm font-semibold text-blue ml-1">
                   Password
                 </label>
                 <input
                   type="password"
-                  className="w-full mt-1 px-3 py-2 border border-chitu rounded-lg focus:ring-2 focus:ring-gold focus:outline-none placeholder:text-chitu"
+                  className="w-full mt-1 px-3 py-2 border border-gold rounded-lg"
                   placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
-
               <button
                 type="submit"
-                className="w-full py-2 bg-gold text-white rounded-lg font-semibold hover:bg-blue transition-all duration-300"
+                className="w-full py-2 bg-blue text-white rounded-lg font-semibold hover:bg-gold transition-all duration-300"
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </form>
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import digitalMarketingImg from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/gp.jpg";
+import digitalMarketingImg from "../../assets/pictures/gp.jpg";
 
 const DigitalMarketing = () => {
   return (

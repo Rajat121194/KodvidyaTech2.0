@@ -1,5 +1,5 @@
 import React from "react";
-import teamImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/cp2.jpg";
+import teamImage from "../../assets/pictures/cp2.jpg";
 
 const Culture = () => {
   return (

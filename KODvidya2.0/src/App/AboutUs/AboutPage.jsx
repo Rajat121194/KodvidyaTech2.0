@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/Home/Navbar.jsx";
-import WhoWeAre from "./WhoWeAre";
+import Navbar from "../Home/Navbar.jsx";
+import WhoWeAre from "./WhoWeAre.jsx";
 import BrandThrive from "./BrandThrive.jsx";
-import Footer from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/App/Home/Footer.jsx";
+import Footer from "../Home/Footer.jsx";
 
 function About() {
   return (

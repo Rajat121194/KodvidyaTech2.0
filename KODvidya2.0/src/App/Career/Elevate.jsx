@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import heroImg from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/por.jpg";
+import heroImg from "../../assets/pictures/por.jpg";
 import Career from "./Careers";
 
 const Elevate = () => {

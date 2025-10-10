@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import TeamImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/teamwhy.webp";
+import TeamImage from "../../assets/pictures/teamwhy.webp";
 import { FaUserSecret } from "react-icons/fa";
 import { FaUsersRays } from "react-icons/fa6";
 import { GiBrainFreeze, GiRocketThruster } from "react-icons/gi";

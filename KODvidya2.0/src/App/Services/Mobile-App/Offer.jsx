@@ -1,5 +1,5 @@
 import { TiTickOutline } from "react-icons/ti";
-import mpImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/mp.jpg";
+import mpImage from "../../../assets/pictures/mp.jpg";
 
 const MobileAppServices = () => {
   return (

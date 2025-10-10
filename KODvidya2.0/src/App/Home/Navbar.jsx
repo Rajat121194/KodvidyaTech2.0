@@ -3,11 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-// Assets
-import logo from "/src/assets/pictures/slogo.png";
-import ig from "/src/assets/pictures/ingr.png";
-import linkedin from "/src/assets/pictures/lnkdin.png";
-import gmail from "/src/assets/pictures/maile.png";
+import logo from "../../assets/pictures/slogo.png";
+import ig from "../../assets/pictures/ingr.png";
+import linkedin from "../../assets/pictures/lnkdin.png";
+import gmail from "../../assets/pictures/maile.png";
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

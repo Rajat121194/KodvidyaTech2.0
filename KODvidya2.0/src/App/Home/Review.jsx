@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { GiStarSkull, GiMoebiusStar } from "react-icons/gi";
 import { TfiArrowLeft, TfiArrowRight } from "react-icons/tfi";
-import JohnSmith from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client1.jpg";
-import EmilyZhang from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client2.jpg";
-import SamanthaLee from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client3.jpg";
-import MarkJohnson from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client4.jpg";
-import SophiaReynolds from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client5.jpg";
-import LilyCarter from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client9.jpg";
-import ZStub from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client10.jpg";
-import MinJun from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client11.jpg";
-import OliviaBennett from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client12.jpg";
-import JamesWalker from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client13.jpg";
-import ChloeRivera from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/client14.jpg";
+import JohnSmith from "../../assets/pictures/client1.jpg";
+import EmilyZhang from "../../assets/pictures/client2.jpg";
+import SamanthaLee from "../../assets/pictures/client3.jpg";
+import MarkJohnson from "../../assets/pictures/client4.jpg";
+import SophiaReynolds from "../../assets/pictures/client5.jpg";
+import LilyCarter from "../../assets/pictures/client9.jpg";
+import ZStub from "../../assets/pictures/client10.jpg";
+import MinJun from "../../assets/pictures/client11.jpg";
+import OliviaBennett from "../../assets/pictures/client12.jpg";
+import JamesWalker from "../../assets/pictures/client13.jpg";
+import ChloeRivera from "../../assets/pictures/client14.jpg";
 
 const testimonials = [
   {

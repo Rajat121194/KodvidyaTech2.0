@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import img1 from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/frntend.jpg";
-import img2 from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/bkend.jpg";
-import img3 from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/intern.jpg";
-import img4 from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/Full.jpg";
-import img5 from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/dvops.jpg";
-import img6 from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/Bidd.jpg";
+import img1 from "../../assets/pictures/frntend.jpg";
+import img2 from "../../assets/pictures/bkend.jpg";
+import img3 from "../../assets/pictures/intern.jpg";
+import img4 from "../../assets/pictures/Full.jpg";
+import img5 from "../../assets/pictures/dvops.jpg";
+import img6 from "../../assets/pictures/Bidd.jpg";
 
 export default function Career() {
   const [showPopup, setShowPopup] = useState(false);
@@ -40,7 +40,7 @@ export default function Career() {
     setSelectedRole(role);
     setDuration("");
     if (role === "Internship") {
-      setStep("duration"); // 👈 first choose duration
+      setStep("duration");
     } else {
       setStep("form");
     }

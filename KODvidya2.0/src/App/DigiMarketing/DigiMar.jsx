@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import marketingImg from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/marketing.png";
+import marketingImg from "../../assets/pictures/marketing.png";
 
 const DigitalMarketing = () => {
   return (

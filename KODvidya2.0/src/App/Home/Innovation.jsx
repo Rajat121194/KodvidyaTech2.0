@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TeamImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/team.jpg";
+import TeamImage from "../../assets/pictures/team.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 

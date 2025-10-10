@@ -1,13 +1,24 @@
 import React from "react";
-import bgVideo from "/src/assets/videos/you.mp4";
+import bgVideoLandscape from "/src/assets/videos/you.mp4";
+import bgVideoPortrait from "/src/assets/videos/you-vertical.mp4";
 
 const WhoWeAre = () => {
   return (
     <section className="relative bg-kalu text-chitu py-25 overflow-hidden">
-      {/* Background Video */}
+      {/* Desktop / Tablet Video */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={bgVideo}
+        className="hidden md:block absolute inset-0 w-full h-full object-cover"
+        src={bgVideoLandscape}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* Mobile Video */}
+      <video
+        className="block md:hidden absolute inset-0 w-full h-full object-cover"
+        src={bgVideoPortrait}
         autoPlay
         loop
         muted
@@ -15,7 +26,7 @@ const WhoWeAre = () => {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0"></div>
+      <div className="absolute bg-blue/10 inset-0"></div>
 
       {/* Content */}
       <div className="relative z-10 text-right mr-10 mt-10">

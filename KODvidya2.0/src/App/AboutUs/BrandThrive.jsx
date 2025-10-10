@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import monitorImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/bthr.jpg";
+import monitorImage from "../../assets/pictures/bthr.jpg";
 
 const HeroSection = () => {
   return (

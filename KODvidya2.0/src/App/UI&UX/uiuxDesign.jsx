@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import uiUxImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/uiuxp.jpg";
+import uiUxImage from "../../assets/pictures/uiuxp.jpg";
 
 const UiUxDesign = () => {
   return (

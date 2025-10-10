@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HappyClientsImg from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/hc.jpg";
+import HappyClientsImg from "../../../assets/pictures/hc.jpg";
 
 const HappyClients = () => {
   return (

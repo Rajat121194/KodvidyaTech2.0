@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/tp.jpg";
+import heroImg from "../../assets/pictures/tp.jpg";
 
 const TElevate = () => {
   return (

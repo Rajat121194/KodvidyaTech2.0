@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import webImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/web-dev.png";
+import webImage from "../../../assets/pictures/web-dev.png";
 
 const WebDevSection = () => {
   return (

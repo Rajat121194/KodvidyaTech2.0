@@ -1,10 +1,9 @@
 import React from "react";
-
-import Navbar from "./Navbar.jsx";
-
 import Hero from "./Hero.jsx";
+import Navbar from "./Navbar.jsx";
 import Process from "./Process.jsx";
 import Innovation from "./Innovation.jsx";
+import AnimatedSection from "./AnimatedSection.jsx";
 import Services from "./Services.jsx";
 import WhyKodVidya from "./WhyKodVidya.jsx";
 import SerWeUse from "./SerWeUse.jsx";
@@ -12,21 +11,29 @@ import Review from "./Review.jsx";
 import DropUs from "./DropUs.jsx";
 import Footer from "./Footer.jsx";
 
-function Home() {
+function HomePage({ setToken }) {
   return (
     <>
-      <Hero />
+      <Hero setToken={setToken} /> {/* Pass setToken */}
       <Navbar />
       <Process />
       <Innovation />
-      <Services />
-      <WhyKodVidya />
+      <AnimatedSection>
+        <Services />
+      </AnimatedSection>
+      <AnimatedSection>
+        <WhyKodVidya />
+      </AnimatedSection>
       <SerWeUse />
-      <Review />
-      <DropUs />
+      <AnimatedSection>
+        <Review />
+      </AnimatedSection>
+      <AnimatedSection>
+        <DropUs />
+      </AnimatedSection>
       <Footer />
     </>
   );
 }
 
-export default Home;
+export default HomePage;

@@ -1,5 +1,5 @@
 import React from "react";
-import webDesignImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/ip.jpg";
+import webDesignImage from "../../assets/pictures/ip.jpg";
 
 const WebDesignSection = () => {
   return (

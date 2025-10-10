@@ -2,58 +2,57 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
-// (your imports for images remain unchanged...)
 // Web App Development
-import node from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/node.jpg";
-import react from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/react.jpg";
-import next from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/next.png";
-import php from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/php.png";
-import laravel from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/laravel.png";
-import aspnet from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/asp.png";
-import csharp from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/Chs.png";
-import angular from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/angular.png";
-import vue from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/vue.png";
-import html from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/html.png";
-import css from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/css.jpg";
-import js from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/js.png";
+import node from "../../assets/pictures/node.jpg";
+import react from "../../assets/pictures/react.jpg";
+import next from "../../assets/pictures/next.png";
+import php from "../../assets/pictures/php.png";
+import laravel from "../../assets/pictures/laravel.png";
+import aspnet from "../../assets/pictures/asp.png";
+import csharp from "../../assets/pictures/Chs.png";
+import angular from "../../assets/pictures/angular.png";
+import vue from "../../assets/pictures/vue.png";
+import html from "../../assets/pictures/html.png";
+import css from "../../assets/pictures/css.jpg";
+import js from "../../assets/pictures/js.png";
 
 // Digital Marketing
-import seo from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/seo.png";
-import contentMarketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/content.png";
-import emailMarketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/email.png";
-import socialMediaMarketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/socm.png";
-import paidMarketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/paid.png";
-import affiliateMarketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/aff.png";
-import audioVideoMarketing from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/av.png";
+import seo from "../../assets/pictures/seo.png";
+import contentMarketing from "../../assets/pictures/content.png";
+import emailMarketing from "../../assets/pictures/email.png";
+import socialMediaMarketing from "../../assets/pictures/socm.png";
+import paidMarketing from "../../assets/pictures/paid.png";
+import affiliateMarketing from "../../assets/pictures/aff.png";
+import audioVideoMarketing from "../../assets/pictures/av.png";
 
 // Mobile Apps Development
-import swift from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/swift.png";
-import kotlin from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/kotlin.png";
-import java from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/java.png";
-import flutter from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/flutter.png";
-import reactNative from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/rctnative.png";
-import xamarin from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/xamarin.png";
+import swift from "../../assets/pictures/swift.png";
+import kotlin from "../../assets/pictures/kotlin.png";
+import java from "../../assets/pictures/java.png";
+import flutter from "../../assets/pictures/flutter.png";
+import reactNative from "../../assets/pictures/rctnative.png";
+import xamarin from "../../assets/pictures/xamarin.png";
 
 // Database Development
-import mssql from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/microsoft-sql.png";
-import mysql from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/mysql.png";
-import postgresql from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/postgresql.png";
-import mongodb from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/mongo.png";
-import amazonRds from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/amazonDB.png";
-import azureSql from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/azure.png";
-import cloudSql from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/cloudSQL.webp";
-import sqlite from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/SQLite.png";
-import kafka from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/kafka.png";
+import mssql from "../../assets/pictures/microsoft-sql.png";
+import mysql from "../../assets/pictures/mysql.png";
+import postgresql from "../../assets/pictures/postgresql.png";
+import mongodb from "../../assets/pictures/mongo.png";
+import amazonRds from "../../assets/pictures/amazonDB.png";
+import azureSql from "../../assets/pictures/azure.png";
+import cloudSql from "../../assets/pictures/cloudSQL.webp";
+import sqlite from "../../assets/pictures/SQLite.png";
+import kafka from "../../assets/pictures/kafka.png";
 
-//DevOps & Cloud
-import aws from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/awsa.jpg";
-import msazure from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/mazure.jpg";
-import gcp from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/googlecl.jpg";
-import ibmc from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/ibmc.jpg";
-import oci from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/oracle.jpg";
-import digitalOcean from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/docean.jpg";
-import firebase from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/firebase.jpg";
-import Supabase from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/supabase.jpg";
+// DevOps & Cloud
+import aws from "../../assets/pictures/awsa.jpg";
+import msazure from "../../assets/pictures/mazure.jpg";
+import gcp from "../../assets/pictures/googlecl.jpg";
+import ibmc from "../../assets/pictures/ibmc.jpg";
+import oci from "../../assets/pictures/oracle.jpg";
+import digitalOcean from "../../assets/pictures/docean.jpg";
+import firebase from "../../assets/pictures/firebase.jpg";
+import Supabase from "../../assets/pictures/supabase.jpg";
 
 const App = () => {
   const tabs = [
@@ -291,7 +290,7 @@ const App = () => {
           </div>
           <div className="md:w-1/3 flex justify-end">
             <Link to="/contact">
-              <button className="border-chitu border bg-transparent hover:bg-chitu text-chitu hover:text-gold hover:font-bold px-6 py-3 rounded-lg shadow cursor-pointer transition">
+              <button className="border-chitu  border bg-blue hover:bg-chitu text-chitu hover:text-blue hover:font-bold px-6 py-3 rounded-lg shadow cursor-pointer transition">
                 Request Details
               </button>
             </Link>

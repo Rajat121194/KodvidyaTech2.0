@@ -1,12 +1,12 @@
 import React from "react";
-import logo from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/logo.png";
+import logo from "../../assets/pictures/logo.png";
 import { MdLocationPin } from "react-icons/md";
 import { IoCallSharp } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
-import XIcon from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/X.png";
-import linkedinIcon from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/lin.png";
-import instagramIcon from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/ig.png";
-import gmailIcon from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/gmail.png";
+import XIcon from "../../assets/pictures/X.png";
+import linkedinIcon from "../../assets/pictures/lin.png";
+import instagramIcon from "../../assets/pictures/ig.png";
+import gmailIcon from "../../assets/pictures/gmail.png";
 
 export default function FooterSection() {
   return (
@@ -16,7 +16,7 @@ export default function FooterSection() {
         <div className="flex flex-col flex-1 mt-1 order-first md:order-none">
           <div className="flex flex-col md:flex-row justify-between items-start gap-10">
             {/* MIDDLE: LOGO & TAGLINE */}
-            <div className="flex flex-col items-center text-center mt-2 md:items-start md:text-left ml-26">
+            <div className="flex flex-col items-center text-center mt-2 md:items-start md:text-left ml-30">
               <img src={logo} alt="Logo" className="w-40 md:w-60" />
               <p className="text-2xl md:text-4xl mt-4 font-Bebas text-gold">
                 Beyond Your Dreams
@@ -25,7 +25,7 @@ export default function FooterSection() {
 
             {/* RIGHT: CONTACT INFO */}
             <div className="space-y-2 max-w-lg text-center md:text-left">
-              <h3 className="text-2xl md:text-4xl text-gold font-Bebas mt-2">
+              <h3 className="text-2xl md:text-4xl text-gold font-Bebas">
                 Get in touch
               </h3>
 
@@ -70,7 +70,7 @@ export default function FooterSection() {
                 >
                   <img
                     src={XIcon}
-                    alt="Facebook"
+                    alt="X"
                     className="w-8 h-8 md:w-10 md:h-10 hover:scale-125 transition"
                   />
                 </a>

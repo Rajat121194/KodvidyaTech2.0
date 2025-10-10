@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MobileAppImg from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/mobapp.jpg";
+import MobileAppImg from "../../../assets/pictures/mobapp.jpg";
 
 const MobileAppSection = () => {
   return (
