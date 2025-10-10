@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+
+// Assets
 import logo from "/src/assets/pictures/slogo.png";
 import ig from "/src/assets/pictures/ingr.png";
 import linkedin from "/src/assets/pictures/lnkdin.png";
@@ -20,6 +22,9 @@ function Navbar() {
     phone: "",
     message: "",
   });
+
+  const [formStatus, setFormStatus] = useState({ type: "", message: "" });
+  const [showMessage, setShowMessage] = useState(false);
 
   const lastScrollY = useRef(0);
   const mobileMenuRef = useRef(null);
@@ -45,7 +50,7 @@ function Navbar() {
       isMobileMenuOpen || isHireFormOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen, isHireFormOpen]);
 
-  // Click outside mobile menu
+  // Close mobile menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -65,14 +70,58 @@ function Navbar() {
   }, [isMobileMenuOpen]);
 
   // Form handlers
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // TODO: connect to Nodemailer backend here
-    setIsHireFormOpen(false);
+    setFormStatus({ type: "", message: "" });
+    setShowMessage(false);
+
+    try {
+      const res = await fetch("http://localhost:5000/api/hire-us", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setFormStatus({ type: "success", message: data.message });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setFormStatus({
+          type: "error",
+          message: data.error || "Unknown error",
+        });
+      }
+
+      // Show fade-in message
+      setShowMessage(true);
+
+      // Fade out after 2 seconds
+      setTimeout(() => setShowMessage(false), 2000);
+
+      // Auto-close modal on success
+      if (res.ok) {
+        setTimeout(() => setIsHireFormOpen(false), 2500);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus({
+        type: "error",
+        message: "Could not send request. Try again later.",
+      });
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 2000);
+    }
   };
 
   const navItems = [
@@ -106,6 +155,7 @@ function Navbar() {
           </Link>
         </div>
 
+        {/* Social + Hire Us */}
         <div className="flex items-center -space-x-4 group transition-all duration-500">
           <a
             href="https://www.instagram.com/codemechanism_infotech/"
@@ -130,7 +180,7 @@ function Navbar() {
             <img src={linkedin} alt="LinkedIn" className="h-10 w-12" />
           </a>
 
-          {/* ✅ Hire Us opens modal */}
+          {/* Hire Us button */}
           <button
             onClick={() => setIsHireFormOpen(true)}
             className="ml-12 bg-gold text-chitu px-4 py-2 rounded-full hover:bg-chitu cursor-pointer hover:text-gold hover:border-gold border transition"
@@ -264,7 +314,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* ✅ Hire Us Modal Form */}
+      {/* Hire Us Modal Form */}
       {isHireFormOpen && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg p-6 relative">
@@ -277,6 +327,22 @@ function Navbar() {
             <h2 className="text-2xl font-bold text-center mb-4 text-blue">
               Hire Us
             </h2>
+
+            {/* Success/Error message */}
+            {formStatus.message && (
+              <div
+                className={`text-center py-2 px-3 rounded mb-3 transition-opacity duration-500 ${
+                  showMessage ? "opacity-100" : "opacity-0"
+                } ${
+                  formStatus.type === "success"
+                    ? "bg-green-100 text-green-800"
+                    : "bg-red-100 text-red-800"
+                }`}
+              >
+                {formStatus.message}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
