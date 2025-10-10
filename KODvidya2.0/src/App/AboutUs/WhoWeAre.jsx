@@ -26,7 +26,7 @@ const WhoWeAre = () => {
       />
 
       {/* Overlay */}
-      <div className="absolute bg-blue/10 inset-0"></div>
+      <div className="absolute inset-0"></div>
 
       {/* Content */}
       <div className="relative z-10 text-right mr-10 mt-10">
