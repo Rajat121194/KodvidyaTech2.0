@@ -5,7 +5,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const path = require("path");
 
 dotenv.config();
 
@@ -18,7 +17,7 @@ const ADMIN_EMAIL = "19R0CKY93";
 const ADMIN_PASSWORD = "R0CKYR4NGR4";
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5173", credentials: true })); // frontend origin
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 
 // MongoDB Connection
@@ -27,7 +26,9 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB error:", err));
 
-// Models
+// ------------------ Models ------------------
+
+// Contact Form Schema
 const contactFormSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -39,9 +40,11 @@ const contactFormSchema = new mongoose.Schema({
     fileName: String,
   },
   createdAt: { type: Date, default: Date.now },
+  dismissedByAdmin: { type: Boolean, default: false },
 });
 const ContactForm = mongoose.model("ContactForm", contactFormSchema);
 
+// Hire Us Form Schema
 const hireUsFormSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -49,6 +52,7 @@ const hireUsFormSchema = new mongoose.Schema({
   phone: String,
   message: String,
   createdAt: { type: Date, default: Date.now },
+  dismissedByAdmin: { type: Boolean, default: false },
 });
 const HireUsForm = mongoose.model("HireUsForm", hireUsFormSchema);
 
@@ -57,7 +61,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // Use Gmail App Password if 2FA enabled
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -65,21 +69,8 @@ const transporter = nodemailer.createTransport({
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// ------------------- ROUTES -------------------
+// ------------------ Middleware ------------------
 
-// Admin Login
-app.post("/api/admin/login", (req, res) => {
-  const { email, password } = req.body;
-
-  if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-    const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: "1h" });
-    return res.json({ success: true, token });
-  } else {
-    return res.status(400).json({ error: "Invalid credentials" });
-  }
-});
-
-// Middleware to verify JWT
 function authMiddleware(req, res, next) {
   const authHeader = req.headers["authorization"];
   if (!authHeader) return res.status(403).json({ error: "No token provided" });
@@ -94,11 +85,23 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// Contact Form (with CV upload)
+// ------------------ Routes ------------------
+
+// Admin Login
+app.post("/api/admin/login", (req, res) => {
+  const { email, password } = req.body;
+  if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+    const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: "1h" });
+    return res.json({ success: true, token });
+  } else {
+    return res.status(400).json({ error: "Invalid credentials" });
+  }
+});
+
+// Contact Form Submission
 app.post("/api/contact", upload.single("cv"), async (req, res) => {
   try {
     const { firstName, lastName, email, message } = req.body;
-
     const newContact = new ContactForm({
       firstName,
       lastName,
@@ -112,7 +115,6 @@ app.post("/api/contact", upload.single("cv"), async (req, res) => {
           }
         : null,
     });
-
     await newContact.save();
 
     // Send email
@@ -120,61 +122,45 @@ app.post("/api/contact", upload.single("cv"), async (req, res) => {
       from: email,
       to: process.env.EMAIL_USER,
       subject: "New Contact Form Submission",
-      text: `
-Name: ${firstName} ${lastName}
-Email: ${email}
-Message: ${message}
-      `,
+      text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nMessage: ${message}`,
       attachments: req.file
-        ? [
-            {
-              filename: req.file.originalname,
-              content: req.file.buffer,
-            },
-          ]
+        ? [{ filename: req.file.originalname, content: req.file.buffer }]
         : [],
     };
-
     await transporter.sendMail(mailOptions);
 
     res.json({ success: true, message: "Message & CV saved!" });
-  } catch (error) {
-    console.error("Error in contact form:", error);
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "Failed to process contact form" });
   }
 });
 
-// Hire Us Form
+// Hire Us Form Submission
 app.post("/api/hire-us", async (req, res) => {
   try {
     const { name, email, company, phone, message } = req.body;
-
     await HireUsForm.create({ name, email, company, phone, message });
 
-    // Send email
     const mailOptions = {
       from: email,
       to: process.env.EMAIL_USER,
       subject: "New Hire Us Request",
-      text: `
-Name: ${name}
-Email: ${email}
-Company: ${company}
-Phone: ${phone}
-Message: ${message}
-      `,
+      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nPhone: ${phone}\nMessage: ${message}`,
     };
-
     await transporter.sendMail(mailOptions);
 
-    res.json({ success: true, message: "Hire request sent & saved!" });
-  } catch (error) {
-    console.error("Error in hire-us form:", error);
+    res.json({
+      success: true,
+      message: "Request submitted. We’ll be in touch soon",
+    });
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "Failed to process hire-us form" });
   }
 });
 
-// Admin – fetch all forms
+// Fetch all forms (for admin)
 app.get("/api/admin/forms", authMiddleware, async (req, res) => {
   try {
     const contactForms = await ContactForm.find().sort({ createdAt: -1 });
@@ -185,14 +171,35 @@ app.get("/api/admin/forms", authMiddleware, async (req, res) => {
   }
 });
 
-// Admin – fetch CV by ContactForm ID
+// Dismiss a notification
+app.put(
+  "/api/admin/forms/:type/:id/dismiss",
+  authMiddleware,
+  async (req, res) => {
+    const { type, id } = req.params;
+    try {
+      if (type === "contact") {
+        await ContactForm.findByIdAndUpdate(id, { dismissedByAdmin: true });
+      } else if (type === "hire") {
+        await HireUsForm.findByIdAndUpdate(id, { dismissedByAdmin: true });
+      } else {
+        return res.status(400).json({ error: "Invalid type" });
+      }
+      res.json({ success: true });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to dismiss notification" });
+    }
+  }
+);
+
+// Fetch CV by ContactForm ID
 app.get("/api/admin/contact/:id/cv", authMiddleware, async (req, res) => {
   try {
     const contact = await ContactForm.findById(req.params.id);
     if (!contact || !contact.cv) {
       return res.status(404).json({ error: "CV not found" });
     }
-
     res.set("Content-Type", contact.cv.contentType);
     res.set("Content-Disposition", `inline; filename="${contact.cv.fileName}"`);
     res.send(contact.cv.data);

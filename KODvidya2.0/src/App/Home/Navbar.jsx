@@ -13,6 +13,7 @@ function Navbar() {
   const [showSecondBar, setShowSecondBar] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHireFormOpen, setIsHireFormOpen] = useState(false);
+  const [loading, setLoading] = useState(false); // ✅ new loading state
 
   const [formData, setFormData] = useState({
     name: "",
@@ -76,6 +77,7 @@ function Navbar() {
     e.preventDefault();
     setFormStatus({ type: "", message: "" });
     setShowMessage(false);
+    setLoading(true);
 
     try {
       const res = await fetch("http://localhost:5000/api/hire-us", {
@@ -102,13 +104,9 @@ function Navbar() {
         });
       }
 
-      // Show fade-in message
       setShowMessage(true);
-
-      // Fade out after 2 seconds
       setTimeout(() => setShowMessage(false), 2000);
 
-      // Auto-close modal on success
       if (res.ok) {
         setTimeout(() => setIsHireFormOpen(false), 2500);
       }
@@ -120,6 +118,8 @@ function Navbar() {
       });
       setShowMessage(true);
       setTimeout(() => setShowMessage(false), 2000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -145,7 +145,7 @@ function Navbar() {
 
   return (
     <>
-      {/* Top Bar - Desktop */}
+      {/* ---------- TOP BAR ---------- */}
       <div className="hidden lg:flex fixed top-0 left-0 w-full z-[1000] bg-kalu/10 backdrop-blur-md px-8 lg:px-23 justify-between items-center shadow-md h-16">
         {/* Logo */}
         <div className="flex items-center space-x-3 cursor-pointer">
@@ -179,7 +179,7 @@ function Navbar() {
             <img src={linkedin} alt="LinkedIn" className="h-10 w-12" />
           </a>
 
-          {/* Hire Us button */}
+          {/* Hire Us */}
           <button
             onClick={() => setIsHireFormOpen(true)}
             className="ml-12 bg-gold text-chitu px-4 py-2 rounded-full hover:bg-chitu cursor-pointer hover:text-gold hover:border-gold border transition"
@@ -189,7 +189,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Second Bar */}
+      {/* ---------- SECOND BAR ---------- */}
       <div
         className={`hidden lg:flex fixed left-0 w-full z-[999] bg-gold/10 backdrop-blur-md px-20 font-Sans font-semibold transition-transform duration-500 ease-in-out ${
           showSecondBar ? "translate-y-[60px]" : "translate-y-0"
@@ -248,7 +248,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navbar */}
+      {/* ---------- MOBILE NAVBAR ---------- */}
       <div className="lg:hidden fixed top-0 left-0 w-full z-[1000] bg-chitu/60 backdrop-blur-md shadow-md">
         <div className="flex justify-between items-center h-16 px-4">
           <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
@@ -313,7 +313,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Hire Us Modal Form */}
+      {/* ---------- HIRE US  ---------- */}
       {isHireFormOpen && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg p-6 relative">
@@ -342,7 +342,7 @@ function Navbar() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 relative">
               <input
                 type="text"
                 name="name"
@@ -384,12 +384,25 @@ function Navbar() {
                 onChange={handleChange}
                 className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
               />
+
               <button
                 type="submit"
                 className="w-full bg-gold text-chitu py-2 rounded-md font-bold hover:bg-chitu hover:text-gold border hover:border-gold transition"
               >
                 Submit
               </button>
+
+              {/* ✅ Loader Overlay  */}
+              {loading && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-[3000]">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className="w-12 h-12 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
+                    <p className="text-chitu text-2xl font-Bebas">
+                      Submitting...
+                    </p>
+                  </div>
+                </div>
+              )}
             </form>
           </div>
         </div>

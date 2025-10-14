@@ -12,6 +12,7 @@ export default function ContactPage() {
 
   const [errors, setErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(false); // 🌀 new state
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -55,12 +56,16 @@ export default function ContactPage() {
     formToSend.append("message", formData.message);
     if (formData.cv) formToSend.append("cv", formData.cv);
 
+    setLoading(true); // 🌀 start loader
+
     fetch("http://localhost:5000/api/contact", {
       method: "POST",
       body: formToSend,
     })
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false); // 🌀 stop loader
+
         if (data.error) {
           alert("Error: " + data.error);
         } else {
@@ -77,13 +82,15 @@ export default function ContactPage() {
         }
       })
       .catch((err) => {
+        setLoading(false); // 🌀 stop loader
         console.error("Error:", err);
         alert("Failed to send message");
       });
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-start justify-center px-14 py-28 gap-2">
+    <div className="min-h-screen bg-white flex flex-col lg:flex-row items-start justify-center px-14 py-28 gap-2 relative">
+      {/* Left Section */}
       <div className="flex-1 text-center lg:text-left space-y-10 mt-12">
         <h2 className="text-6xl font-Bebas text-gold mb-4">Contact Us</h2>
 
@@ -126,7 +133,8 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="flex-1 bg-gold rounded-xl shadow-2xl p-4">
+      {/* Right Section (Form) */}
+      <div className="flex-1 bg-gold rounded-xl shadow-2xl p-4 relative">
         <h2 className="text-6xl font-Bebas text-blue text-center">
           We’d love to hear from you
         </h2>
@@ -204,13 +212,17 @@ export default function ContactPage() {
 
           <button
             type="submit"
-            className="mx-auto block bg-blue hover:bg-white text-white hover:text-blue border hover:border-blue hover:font-bold font-Sans px-10 py-3 rounded-full shadow-lg transition duration-300"
+            disabled={loading}
+            className={`mx-auto block bg-blue hover:bg-white text-white hover:text-blue border hover:border-blue hover:font-bold font-Sans px-10 py-3 rounded-full shadow-lg transition duration-300 ${
+              loading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
           >
-            SUBMIT
+            {loading ? "Sending..." : "SUBMIT"}
           </button>
         </form>
       </div>
 
+      {/* Success Popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-black/10 bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-2xl text-center max-w-sm w-full">
@@ -221,6 +233,14 @@ export default function ContactPage() {
               🚀 Sent! Your message is on a mission to reach us.
             </p>
           </div>
+        </div>
+      )}
+
+      {/* Loader Overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-kalu/70 flex flex-col items-center justify-center z-50 text-white">
+          <div className="w-20 h-20 border-4 border-t-transparent border-gold rounded-full animate-spin mb-4"></div>
+          <p className="text-5xl font-Bebas text-chitu">Sending message...</p>
         </div>
       )}
     </div>
