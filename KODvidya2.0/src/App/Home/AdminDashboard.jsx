@@ -13,7 +13,7 @@ export default function AdminDashboard({ token }) {
     selectedForm: null,
   });
   const [view, setView] = useState("dashboard");
-  const [loading, setLoading] = useState(false);
+  const [setLoading] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [prevNotificationCount, setPrevNotificationCount] = useState(0);
 
