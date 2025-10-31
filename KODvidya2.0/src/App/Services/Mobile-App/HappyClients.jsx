@@ -4,29 +4,36 @@ import HappyClientsImg from "../../../assets/pictures/hc.jpg";
 
 const HappyClients = () => {
   return (
-    <section className="bg-gold text-chitu py-4 px-4 md:px-20 flex flex-col-reverse lg:flex-row items-center justify-between">
-      <div className="max-w-xl">
-        <h2 className="text-6xl font-Bebas">Happy Clients</h2>
-        <p className="text-xl font-Sans mb-5">
-          CodeMechanism Infotech may efficiently showcase their satisfied
-          clients through case studies, testimonials, and visual aids, proving
-          their knowledge, dependability, and the beneficial effects of their
-          services on their clients company. Showcasing real-world triumphs and
-          client pleasure not only increases credibility but also draws in new
-          business.
+    <section className="bg-gold text-chitu py-10 px-4 sm:px-8 md:px-12 lg:px-30 flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+      {/* Left Text Section */}
+      <div className="w-full lg:w-1/2">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas mb-4 text-center lg:text-left">
+          Happy Clients
+        </h2>
+
+        <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-Sans text-center lg:text-left mb-6">
+          CodeMechanism Infotech efficiently showcases their satisfied clients
+          through case studies, testimonials, and visuals — proving their
+          expertise, reliability, and the positive impact of their services on
+          their clients’ businesses. Highlighting real-world successes not only
+          boosts credibility but also attracts new opportunities.
         </p>
-        <Link to="/contact">
-          <button className="bg-gold hover:bg-chitu hover:text-gold text-blue border-1 hover:border-blue hover:font-bold py-2 px-6 rounded-lg transition duration-300">
-            Get Started
-          </button>
-        </Link>
+
+        <div className="flex justify-center lg:justify-start">
+          <Link to="/contact">
+            <button className="bg-chitu text-gold font-semibold hover:bg-blue hover:text-chitu hover:border-chitu border border-transparent py-3 px-8 sm:py-4 sm:px-10 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl">
+              Get Started
+            </button>
+          </Link>
+        </div>
       </div>
 
-      <div className="relative w-full mb-12 lg:mb-0 lg:w-1/2 flex justify-center">
+      {/* Right Image Section */}
+      <div className="w-full lg:w-1/2 flex justify-center">
         <img
           src={HappyClientsImg}
-          alt="Tablet View"
-          className="w-150 drop-shadow-2xl z-10"
+          alt="Happy Clients"
+          className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl rounded-lg shadow-2xl object-cover"
         />
       </div>
     </section>

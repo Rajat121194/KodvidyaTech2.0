@@ -49,33 +49,36 @@ const services = [
 
 const WebDevProcess = () => {
   return (
-    <div className="px-15 py-12 max-w-7xl mx-auto bg-gold/10">
-      <div className="text-center mb-6">
-        <h2 className="text-6xl font-Bebas text-gold">
+    <div className="px-5 sm:px-10 md:px-20 lg:px-30 py-12 mx-auto bg-gold/10">
+      {/* Header Section */}
+      <div className="text-center mb-10 px-3">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold leading-tight">
           Our Web Development Services Process
         </h2>
-        <p className="text-blue text-xl  max-w-3xl mx-auto">
+        <p className="mt-3 text-blue text-base sm:text-lg md:text-2xl lg:text-3xl max-w-3xl mx-auto font-Sans leading-relaxed">
           Once we engage in a conversation, we provide comprehensive solutions
           and a detailed roadmap with full dedication...
         </p>
       </div>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 cursor-move">
+      {/* Cards Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 cursor-move">
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white p-2 rounded-xl shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out text-center border border-gold"
+            className="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out text-center border border-gold"
           >
-            <div className="mb-2 flex justify-center">{service.icon}</div>
-            <h3 className="text-3xl font-Bebas text-gold mb-2">
+            <div className="mb-4 flex justify-center">{service.icon}</div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Bebas text-gold mb-2">
               {service.title}
             </h3>
-            <p className="text-blue font-Sans text-sm">{service.description}</p>
+            <p className="text-blue font-Sans text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+              {service.description}
+            </p>
           </div>
         ))}
       </div>
     </div>
   );
 };
-
 export default WebDevProcess;

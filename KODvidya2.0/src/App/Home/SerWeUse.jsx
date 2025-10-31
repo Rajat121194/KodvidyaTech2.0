@@ -169,15 +169,10 @@ const App = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      // Kill previous tween if tab changes
       if (tweenRef.current) tweenRef.current.kill();
-
-      // Reset position
       gsap.set(scrollRef.current, { x: 0 });
-
-      // Animate infinitely
       tweenRef.current = gsap.to(scrollRef.current, {
-        x: "-50%", // shift one duplicate set
+        x: "-50%",
         duration: 60,
         ease: "linear",
         repeat: -1,
@@ -187,21 +182,13 @@ const App = () => {
 
   const handleMouseEnter = () => {
     if (tweenRef.current) {
-      gsap.to(tweenRef.current, {
-        timeScale: 0.3,
-        duration: 1,
-        ease: "power1.out",
-      });
+      gsap.to(tweenRef.current, { timeScale: 0.3, duration: 1 });
     }
   };
 
   const handleMouseLeave = () => {
     if (tweenRef.current) {
-      gsap.to(tweenRef.current, {
-        timeScale: 1,
-        duration: 1,
-        ease: "power1.in",
-      });
+      gsap.to(tweenRef.current, { timeScale: 1, duration: 1 });
     }
   };
 
@@ -224,7 +211,9 @@ const App = () => {
 
       {/* Title */}
       <div className="text-center pt-10">
-        <h2 className="text-6xl font-Bebas text-gold">Services We Use</h2>
+        <h2 className="text-4xl sm:text-5xl md:text-[45px] lg:text-[65px] font-Bebas text-gold leading-[70px] md:pt-[60px]">
+          Services We Use
+        </h2>
       </div>
 
       {/* Tabs */}
@@ -235,8 +224,8 @@ const App = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-3 py-2 rounded text-sm font-Sans cursor-pointer transition hover:vibrate ${
               activeTab === tab
-                ? "bg-gold text-chitu border border-blue"
-                : "border border-blue text-gold"
+                ? "bg-gold sm:text-lg md:text-xl lg:text-[22px] text-chitu border border-blue"
+                : "border sm:text-lg md:text-xl lg:text-[22px] border-blue text-gold"
             }`}
           >
             {tab}
@@ -245,7 +234,7 @@ const App = () => {
       </div>
 
       {/* Services Carousel */}
-      <div className="overflow-hidden mt-2 relative">
+      <div className="overflow-hidden relative">
         <div
           ref={scrollRef}
           className="flex px-10"
@@ -264,7 +253,7 @@ const App = () => {
                   alt={service.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center cursor-grabbing pb-4">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <span className="text-gold text-xl font-Bebas px-2 py-1 rounded shadow">
                     {service.name}
                   </span>
@@ -276,27 +265,55 @@ const App = () => {
       </div>
 
       {/* CTA */}
-      <div className="bg-gold text-chitu p-10 mt-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="md:w-2/3">
-            <h3 className="text-6xl font-Bebas mb-1">
-              Get Details about the Approach to your Project
-            </h3>
-            <p className="mb-1 text-xl font-Sans">
-              Tired of discussing your project with multiple people without
-              finding the right approach? One conversation with us will set you
-              on the right track.
-            </p>
-          </div>
-          <div className="md:w-1/3 flex justify-end">
-            <Link to="/contact">
-              <button className="border-chitu  border bg-blue hover:bg-chitu text-chitu hover:text-blue hover:font-bold px-6 py-3 rounded-lg shadow cursor-pointer transition">
-                Request Details
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <div className="bg-gold text-chitu mt-10 py-10 px-4 sm:px-6 md:px-10 lg:px-16">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    {/* Left Content */}
+    <div className="w-full md:w-2/3 text-center md:text-left">
+      <h3
+        className="
+          text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px]
+          font-Bebas 
+          leading-tight sm:leading-snug md:leading-[60px] lg:leading-[70px]
+          mb-4
+        "
+      >
+        Get Details about the Approach to your Project
+      </h3>
+      <p
+        className="
+          text-blue 
+          text-base sm:text-lg md:text-xl lg:text-[22px]
+          font-Sans 
+          leading-relaxed sm:leading-[28px] md:leading-[32px]
+          mb-6
+        "
+      >
+        Tired of discussing your project with multiple people without finding
+        the right approach? One conversation with us will set you on the right
+        track.
+      </p>
+    </div>
+
+    {/* Button */}
+    <div className="w-full md:w-1/3 flex justify-center md:justify-end">
+      <Link to="/contact">
+        <button
+          className="
+            border border-chitu 
+            bg-blue hover:bg-chitu 
+            text-chitu hover:text-blue hover:font-bold
+            text-sm sm:text-base md:text-lg
+            px-5 sm:px-8 md:px-10 
+            py-3 sm:py-4 
+            rounded-lg shadow transition-all duration-300
+          "
+        >
+          Request Details
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
     </div>
   );
 };

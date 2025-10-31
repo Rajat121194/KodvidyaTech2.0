@@ -52,14 +52,18 @@ const services = [
 
 const WebServices = () => {
   return (
-    <div className="max-w-7xl mx-auto px-15 py-12 bg-chitu">
-      <div className="mb-12 flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/2">
-          <h2 className="text-6xl font-Bebas mb-2 text-gold">
-            What Web Development Services Solution We Offer?
+    <div className="mx-auto px-5 sm:px-10 md:px-20 lg:px-30 py-12 bg-chitu">
+      {/* Header section */}
+      <div className="mb-12 flex flex-col md:flex-row gap-6 md:gap-8">
+        {/* Left heading */}
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-[88px] font-Bebas mb-4 text-gold leading-tight">
+            What Web Development <br /> Services Solution We Offer?
           </h2>
         </div>
-        <div className="md:w-1/2 text-blue text-xl font-Sans">
+
+        {/* Right paragraph */}
+        <div className="w-full md:w-1/2 text-blue text-base sm:text-lg md:text-2xl lg:text-3xl font-Sans leading-relaxed text-center md:text-left">
           <p>
             We understand the value of allowing many mindsets in the many
             nations of today. We use a range of technologies to provide complete
@@ -68,16 +72,22 @@ const WebServices = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 cursor-crosshair">
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {services.map((service, index) => (
           <div
             key={index}
-            className={`group p-4 border-1 border-gold rounded-xl p-1 text-blue font-Sans transition-all duration-300 transform 
-              ${service.bgColor} hover:scale-102 active:scale-100`}
+            className={`group p-6 sm:p-8 rounded-2xl border border-gold text-blue font-Sans transition-all duration-300 transform ${service.bgColor} hover:scale-105 hover:shadow-xl`}
           >
-            <div className="mb-4 text-blue font-Sans">{service.icon}</div>
-            <h3 className="text-3xl font-Bebas mb-2">{service.title}</h3>
-            <p className="text-sm font-Sans">{service.description}</p>
+            <div className="mb-4 flex justify-center md:justify-start text-blue">
+              {service.icon}
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Bebas mb-3 text-center md:text-left">
+              {service.title}
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-center md:text-left leading-relaxed">
+              {service.description}
+            </p>
           </div>
         ))}
       </div>

@@ -53,30 +53,36 @@ const cards = [
 
 export default function WhyChooseUs() {
   return (
-    <div className="px-10 py-20 max-w-7xl mx-auto bg-gold/10">
-      <div className="mb-4 flex flex-col md:flex-row items-start gap-4">
-        <h2 className="text-6xl font-Bebas text-gold">Why Choose Us?</h2>
-        <p className="text-xl font-Sans text-blue max-w-3xl">
-          Latest Technology: In order to stay ahead of the competition, we
-          constantly implement new technologies. This guarantees advanced
-          solutions and creative improvements.
+    <section className="px-4 sm:px-6 md:px-10 lg:px-30 py-16 sm:py-6 lg:py-10 bg-gold/10">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+          Why Choose Us?
+        </h2>
+        <p className="sm:text-lg md:text-xl lg:text-2xl font-Sans text-blue max-w-2xl">
+          Latest Technology: In order to stay ahead of the competition, we constantly implement new technologies. This guarantees advanced solutions and creative improvements.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 cursor-crosshair">
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`group border rounded-xl p-4 shadow-sm transition-all duration-300 transform hover:scale-[0.97] ${card.color}`}
+            className="group border-2 border-gold rounded-2xl p-6 sm:p-8 bg-white shadow-md transition-all duration-300 hover:scale-[0.99] hover:shadow-xl hover:bg-gold/5"
           >
-            <div className="text-5xl  text-gold rounded-full inline-block group-hover:scale-110 transition">
+            <div className="text-5xl sm:text-6xl text-gold mb-4 transition-transform duration-300 group-hover:scale-102">
               {card.icon}
             </div>
-            <h3 className="font-Bebas text-2xl text-gold">{card.title}</h3>
-            <p className="text-md text-Sans text-gold">{card.description}</p>
+            <h3 className="font-Bebas text-3xl sm:text-4xl text-gold mb-2">
+              {card.title}
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue transition-colors duration-300">
+              {card.description}
+            </p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

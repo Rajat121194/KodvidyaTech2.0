@@ -28,9 +28,8 @@ function HomePage({ setToken }) {
       <AnimatedSection>
         <Review />
       </AnimatedSection>
-      <AnimatedSection>
         <DropUs />
-      </AnimatedSection>
+      
       <Footer />
     </>
   );

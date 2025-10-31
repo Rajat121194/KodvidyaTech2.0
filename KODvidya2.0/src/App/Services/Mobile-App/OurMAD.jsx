@@ -50,28 +50,31 @@ const steps = [
 
 export default function DevelopmentSteps() {
   return (
-    <section className="bg-chitu py-22 px-4">
-      <div className="max-w-5xl mx-auto text-center mb-4">
-        <h2 className="text-3xl md:text-6xl font-Bebas text-gold">
+    <section className="w-screen min-h-screen bg-chitu overflow-hidden">
+      {/* Header */}
+      <div className="text-center mb-4 px-4 sm:px-8 md:px-16 lg:px-30 py-15">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[88px] font-Bebas text-gold">
           Key Steps In Our Mobile App Development
         </h2>
-        <p className="text-blue text-xl  font-Sans">
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-3xl font-Sans">
           Each company has its unique approach to executing the Mobile App
           Development Process. Here’s how we proceed:
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto cursor-crosshair ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 sm:px-8 md:px-16 lg:px-30">
         {steps.map((step, index) => (
           <div
             key={index}
-            className={`group border rounded-2xl p-4 text-center transition-all duration-300 text-white ${step.color}`}
+            className={`group border border-gold rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 text-white ${step.color} hover:scale-105`}
           >
-            <div className="bg-blue p-4 rounded-full inline-block text-gold transition-transform duration-500 group-hover:animate-spin-slow group-hover:scale-120">
+            <div className="bg-blue p-3 sm:p-4 rounded-full inline-block text-gold transition-transform duration-500 group-hover:animate-spin-slow group-hover:scale-105">
               {step.icon}
             </div>
-            <h3 className="text-2xl font-Bebas mb-1">{step.title}</h3>
-            <p className="text-md group-hover:text-chitu font-Sans text-chitu">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Bebas">
+              {step.title}
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-Sans text-chitu group-hover:text-chitu">
               {step.description}
             </p>
           </div>

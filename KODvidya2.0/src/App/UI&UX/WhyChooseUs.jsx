@@ -49,19 +49,23 @@ const services = [
 ];
 
 const WhyChooseUs = () => (
-  <section className="py-16 px-6 md:px-20 bg-gold/10">
-    <h2 className="text-4xl md:text-6xl font-Bebas text-gold">
-      Why Choose Us...?
-    </h2>
-    <p className="text-blue max-w-3xl mb-6 font-Sans">
-      Globally, our seasoned team of professionals at CodeMechanism Infotech has
-      crafted over 250 outstanding UI/UX designs. From initial concept to final
-      launch, each project is meticulously executed. We specialise in
-      comprehensive web design services, covering UX design, UI design, and
-      branding consultancy, ensuring every aspect of your digital presence
-      reflects excellence and innovation.
-    </p>
+  <section className="py-16 px-6 md:px-30 bg-gold/10">
+    {/* Header Section: Heading Left, Paragraph Right */}
+    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-10 gap-6">
+      <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold  lg:w-1/2">
+        Why Choose Us...?
+      </h2>
+      <p className="text-blue sm:text-xl md:text-2xl lg:text-3xl max-w-3xl font-Sans lg:w-1/2">
+        Globally, our seasoned team of professionals at CodeMechanism Infotech has
+        crafted over 250 outstanding UI/UX designs. From initial concept to final
+        launch, each project is meticulously executed. We specialise in
+        comprehensive web design services, covering UX design, UI design, and
+        branding consultancy, ensuring every aspect of your digital presence
+        reflects excellence and innovation.
+      </p>
+    </div>
 
+    {/* Services Grid */}
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 cursor-crosshair">
       {services.map((svc, idx) => (
         <div
@@ -72,10 +76,10 @@ const WhyChooseUs = () => (
           `}
         >
           <div className="mb-2 md:group-hover:text-gold">{svc.icon}</div>
-          <h3 className="text-2xl font-Bebas text-blue md:group-hover:text-white">
+          <h3 className="text-3xl font-Bebas text-blue md:group-hover:text-white">
             {svc.title}
           </h3>
-          <p className="text-md text-blue md:group-hover:text-white">
+          <p className="text-xl text-blue md:group-hover:text-white">
             {svc.description}
           </p>
         </div>

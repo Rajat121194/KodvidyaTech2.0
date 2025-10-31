@@ -21,7 +21,7 @@ export default function Hero({ setToken }) {
   const popupRef = useRef(null);
   const navigate = useNavigate();
 
-  // Highlight rotation
+  // Rotate highlights
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((p) => (p + 1) % highlights.length),
@@ -32,7 +32,7 @@ export default function Hero({ setToken }) {
 
   const { title, color } = highlights[index];
 
-  // GSAP glow on button
+  // Button glow animation
   useEffect(() => {
     const glow = glowRef.current;
     const container = containerRef.current;
@@ -68,7 +68,7 @@ export default function Hero({ setToken }) {
     };
   }, []);
 
-  // GSAP popup animation
+  // Popup animation
   useEffect(() => {
     if (!popupRef.current) return;
     if (showLogin) {
@@ -117,9 +117,23 @@ export default function Hero({ setToken }) {
   };
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between min-h-[80vh] overflow-hidden px-5 py-8">
-      {/* Mobile overlay */}
-      <div className="block md:hidden absolute inset-0 bg-chitu/10 -z-5"></div>
+    <section
+      className="
+        relative flex flex-col md:flex-row items-center justify-center md:justify-between 
+        min-h-screen overflow-hidden
+        px-4 sm:px-8 md:px-16 lg:px-32 
+        py-12 md:py-24
+        lg:pt-32 
+        xl:pt-36 
+        [@media(min-width:1024px)_and_(max-width:1280px)]:pt-28 
+        [@media(min-width:1366px)_and_(max-width:1440px)]:pt-32
+        [@media(min-width:600px)_and_(max-width:1024px)]:pt-20
+        [@media(min-width:1280px)_and_(max-width:1366px)]:pt-28
+        [@media(min-width:1024px)_and_(max-width:1200px)]:justify-center
+      "
+    >
+      {/* Background overlay for small screens */}
+      <div className="absolute inset-0 bg-chitu/10 md:hidden -z-10"></div>
 
       {/* Background videos */}
       <video
@@ -127,7 +141,10 @@ export default function Hero({ setToken }) {
         loop
         muted
         playsInline
-        className="hidden md:block absolute top-0 left-0 w-full h-full object-cover -z-10"
+        className="
+          hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+          w-full h-full object-cover -z-20
+        "
       >
         <source src="/src/assets/videos/herobg.mp4" type="video/mp4" />
       </video>
@@ -136,70 +153,77 @@ export default function Hero({ setToken }) {
         loop
         muted
         playsInline
-        className="block md:hidden absolute top-0 left-0 w-full h-full object-cover -z-10"
+        className="
+          block md:hidden absolute top-0 left-0 w-full h-full object-cover -z-20
+        "
       >
         <source src="/src/assets/videos/herobg-vertical.mp4" type="video/mp4" />
       </video>
 
-      {/* Hero content */}
-      <div className="relative z-10 max-w-xl space-y-2 md:px-16 py-20">
-        <h1 className="text-5xl leading-snug font-Bebas text-blue">
-          A Leading <span className={`${color} text-6xl`}>{title}</span>{" "}
-          Company.
+      {/* Hero Text */}
+      <div className="relative z-10 text-center md:text-left flex flex-col items-center md:items-start max-w-[95%] md:max-w-3xl space-y-4">
+        <h1 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-blue leading-tight md:leading-[70px]">
+          A Leading <br />
+          <span className={`${color} block`}>{title}</span>
+          Company
         </h1>
-        <p className="text-blue text-xl font-Sans mb-6">
-          Welcome to CodeMechanism Infotech, We provide proficient web
-          development, mobile app development, and digital marketing services,
-          with a focus on complete digital solutions. Our team of professionals
-          creates advanced mobile apps and user-friendly, responsive websites to
-          meet your business's demands.
+
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-[95%] sm:max-w-2xl">
+          Welcome to{" "}
+          <span className="font-Bebas text-3xl sm:text-xl md:text-2xl lg:text-3xl text-gold">
+            CodeMechanism Infotech
+          </span>
+          , We provide proficient Web Development, Mobile App Development, and
+          Internet Marketing Services, with a focus on complete digital
+          solutions. Our team of professionals creates advanced mobile apps and
+          user-friendly, responsive websites to meet your business's demands.
         </p>
 
-        {/* Schedule button */}
-        <div className="relative inline-flex items-center">
+        {/* Button */}
+        <div className="relative inline-flex justify-center md:justify-start mt-6">
           <Link
             to="/contact"
             ref={containerRef}
-            className="relative flex items-center justify-center px-10 py-2 rounded-full border border-chitu bg-chitu/10 backdrop-blur-md overflow-hidden font-Sans text-lg font-semibold transition-all duration-300 group"
-            style={{ boxShadow: `0px 0px 80px ${getColor("gold")}` }}
+            className="relative flex items-center justify-center px-6 sm:px-10 md:px-16 py-3 sm:py-4 rounded-full border border-chitu bg-chitu/10 backdrop-blur-md overflow-hidden font-Sans text-sm sm:text-lg font-semibold transition-all duration-300 group"
+            style={{ boxShadow: `0px 0px 40px ${getColor("gold")}` }}
           >
             <div
               ref={glowRef}
               className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0"
             ></div>
-            <span className="relative z-10 text-blue">
+            <span className="relative z-10 text-[16px] sm:text-[18px] md:text-[20px] text-blue">
               Schedule a Free Consultancy Meeting
             </span>
           </Link>
         </div>
       </div>
 
-      {/* Login button */}
+      {/* Workplace Login button */}
       {!showLogin && (
-        <div className="fixed bottom-5 right-10 z-50">
+        <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-10 md:right-16 z-50">
           <button
             onClick={() => setShowLogin(true)}
-            className="px-6 py-3 rounded-full border border-blue bg-transparent text-blue font-semibold tracking-wide backdrop-blur-md hover:bg-gold/10 hover:border-gold hover:text-blue transition-all duration-300 shadow-lg cursor-pointer"
+            className="px-4 sm:px-8 py-2 sm:py-3 rounded-full border border-blue bg-transparent text-blue font-semibold backdrop-blur-md hover:bg-gold/10 hover:border-gold hover:text-blue transition-all duration-300 shadow-lg cursor-pointer text-sm sm:text-base"
           >
             Workplace Login
           </button>
         </div>
       )}
 
-      {/* Login popup */}
+      {/* Login Popup */}
       {showLogin && (
-        <div className="fixed bottom-15 right-10 z-[100]">
+        <div className="fixed bottom-4 right-4 sm:bottom-10 sm:right-10 z-[100] flex justify-end">
           <div
             ref={popupRef}
-            className="bg-chitu/10 rounded-2xl shadow-2xl p-6 w-[350px] relative origin-bottom-right"
+            className="bg-chitu/30 rounded-2xl shadow-2xl p-4 sm:p-6 w-[90vw] sm:w-[400px] relative origin-bottom-right backdrop-blur-md border border-gold"
           >
             <button
               onClick={() => setShowLogin(false)}
-              className="absolute text-2xl top-2 right-2 text-blue hover:text-red-500"
+              className="absolute top-2 right-3 text-blue hover:text-red-500 text-xl sm:text-2xl"
             >
               ✕
             </button>
-            <h2 className="text-2xl font-Bebas text-center text-blue mb-2">
+            <h2 className="text-xl sm:text-2xl font-Bebas text-center text-blue mb-4">
               Workplace Login
             </h2>
             <form className="space-y-3" onSubmit={handleLogin}>
@@ -209,7 +233,7 @@ export default function Hero({ setToken }) {
                 </label>
                 <input
                   type="text"
-                  className="w-full mt-1 px-3 py-2 border border-gold rounded-lg"
+                  className="w-full mt-1 px-3 py-2 border border-gold rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-gold"
                   placeholder="Enter your ID"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -217,12 +241,12 @@ export default function Hero({ setToken }) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-blue ml-1">
+                <label className="block ml-1 text-sm font-semibold text-blue">
                   Password
                 </label>
                 <input
                   type="password"
-                  className="w-full mt-1 px-3 py-2 border border-gold rounded-lg"
+                  className="w-full mt-1 px-3 py-2 border border-gold rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-gold"
                   placeholder="Enter password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -231,7 +255,7 @@ export default function Hero({ setToken }) {
               </div>
               <button
                 type="submit"
-                className="w-full py-2 bg-blue text-white rounded-lg font-semibold hover:bg-gold transition-all duration-300"
+                className="w-full py-2 sm:py-2.5 bg-blue text-white rounded-lg font-semibold hover:bg-gold transition-all duration-300 text-sm sm:text-base"
               >
                 {loading ? "Logging in..." : "Login"}
               </button>
@@ -239,6 +263,6 @@ export default function Hero({ setToken }) {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

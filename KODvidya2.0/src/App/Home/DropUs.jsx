@@ -53,7 +53,7 @@ export default function DropIdeaSection() {
     "from-white via-[#f7bc00] to-[#f7bc00]",
     "from-[#f7bc00] via-white to-[#f7bc00]",
   ];
-  return (
+   return (
     <>
       <style>{`
         @keyframes scroll-left {
@@ -72,31 +72,72 @@ export default function DropIdeaSection() {
         }
       `}</style>
 
-      <div className="bg-chitu pt-10 pb-16 overflow-hidden">
-        <div className="text-center">
-          <h2 className="text-6xl font-Bebas text-gold ">Drop Us Your Idea</h2>
+      <div className="bg-chitu pb-12 sm:pb-16 md:pb-20 overflow-hidden">
+        <div className="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+          {/* Heading */}
+          <h2
+            className="
+              text-3xl sm:text-4xl md:text-5xl lg:text-[65px]
+              font-Bebas text-gold
+              leading-tight sm:leading-snug md:leading-[65px]
+              pt-8 sm:pt-12 md:pt-16
+            "
+          >
+            Drop Us Your Idea
+          </h2>
 
-          <p className="text-xl font-Sans text-blue max-w-2xl mx-auto mb-5 px-1">
-            You may craft an engaging message that is clear and kind in order to
-            successfully ask prospective customers or partners to share their
-            ideas with CodeMechanism Infotech.
+          {/* Paragraph */}
+          <p
+            className="
+              text-blue font-Sans
+              text-base sm:text-lg md:text-xl lg:text-[22px]
+              leading-relaxed sm:leading-[30px] md:leading-[32px]
+              max-w-[95%] sm:max-w-2xl mx-auto mt-4 sm:mt-6 mb-1 sm:mb-2
+            "
+          >
+            You may craft an engaging message that is clear and kind in order to successfully ask prospective customers or partners to share their ideas with CodeMechanism Infotech.
           </p>
+
+          {/* Button */}
           <Link to="/contact">
-            <button className="bg-gold hover:bg-chitu text-chitu hover:text-gold hover:border-blue border-1 hover:font-bold px-10 py-2 rounded  cursor-pointer mb-10">
+            <button
+              className="
+                bg-gold hover:bg-chitu text-chitu hover:text-gold
+                border border-transparent hover:border-blue
+                hover:font-bold
+                text-sm sm:text-base md:text-lg
+                px-6 sm:px-10 md:px-12
+                py-3 sm:py-4
+                rounded
+                cursor-pointer
+                mb-4 sm:mb-6
+                transition-all duration-300
+              "
+            >
               Get Started
             </button>
           </Link>
         </div>
 
-        <div className="space-y-4">
+        {/* Scrolling Tags */}
+        <div className="space-y-3 sm:space-y-4 md:space-y-6 mt-4 sm:mt-8 md:mt-12">
+          {/* Row 1 */}
           <div className="overflow-hidden whitespace-nowrap">
-            <div className="inline-flex gap-4 animate-scroll-right">
+            <div className="inline-flex gap-3 sm:gap-4 animate-scroll-right">
               {[...tags, ...tags].map((tag, idx) => {
                 const gradient = gradients[idx % gradients.length];
                 return (
                   <span
                     key={`top-${idx}`}
-                    className={`bg-gradient-to-r ${gradient} text-md text-blue px-8 py-2 rounded-full whitespace-nowrap transition duration-300 hover:grayscale hover:contrast-125`}
+                    className={`
+                      bg-gradient-to-r ${gradient}
+                      text-xs sm:text-sm md:text-base
+                      text-blue
+                      px-5 sm:px-8 md:px-10
+                      py-2 sm:py-3
+                      rounded-full whitespace-nowrap
+                      transition duration-300 hover:grayscale hover:contrast-125
+                    `}
                   >
                     {tag}
                   </span>
@@ -104,14 +145,24 @@ export default function DropIdeaSection() {
               })}
             </div>
           </div>
+
+          {/* Row 2 */}
           <div className="overflow-hidden whitespace-nowrap">
-            <div className="inline-flex gap-4 animate-scroll-left">
+            <div className="inline-flex gap-3 sm:gap-4 animate-scroll-left">
               {[...tags, ...tags].map((tag, idx) => {
                 const gradient = gradients[(idx + 2) % gradients.length];
                 return (
                   <span
                     key={`bottom-${idx}`}
-                    className={`bg-gradient-to-r ${gradient} text-md text-blue px-8 py-2 rounded-full whitespace-nowrap transition duration-300 hover:grayscale hover:contrast-125`}
+                    className={`
+                      bg-gradient-to-r ${gradient}
+                      text-xs sm:text-sm md:text-base
+                      text-blue
+                      px-5 sm:px-8 md:px-10
+                      py-2 sm:py-3
+                      rounded-full whitespace-nowrap
+                      transition duration-300 hover:grayscale hover:contrast-125
+                    `}
                   >
                     {tag}
                   </span>
@@ -124,3 +175,4 @@ export default function DropIdeaSection() {
     </>
   );
 }
+

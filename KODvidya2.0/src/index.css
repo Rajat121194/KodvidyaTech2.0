@@ -22,11 +22,11 @@ button {
 }
 
 ::selection {
-  background: gold;
-  color: white;
+  background: white;
+  color: black;
 }
 
 ::-moz-selection {
-  background: gold;
+  background: black;
   color: white;
 }

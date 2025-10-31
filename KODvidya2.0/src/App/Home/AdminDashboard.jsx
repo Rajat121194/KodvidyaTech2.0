@@ -13,7 +13,7 @@ export default function AdminDashboard({ token }) {
     selectedForm: null,
   });
   const [view, setView] = useState("dashboard");
-  const [setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [prevNotificationCount, setPrevNotificationCount] = useState(0);
 
@@ -119,11 +119,11 @@ export default function AdminDashboard({ token }) {
         <div className="relative">
           <button
             onClick={toggleNotifications}
-            className="relative p-2 hover:opacity-80"
+            className="relative p-2 hover:scale-105"
           >
-            <img src={bellIcon} alt="Notifications" className="w-20 h-20" />
+            <img src={bellIcon} alt="Notifications" className="w-18 h-18" />
             {notifications.length > 0 && (
-              <span className="absolute top-2 right-4 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-md">
+              <span className="absolute top-2 right-4 font-bold bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-md">
                 {notifications.length}
               </span>
             )}

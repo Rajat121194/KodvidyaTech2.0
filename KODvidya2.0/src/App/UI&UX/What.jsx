@@ -56,55 +56,58 @@ function App() {
     },
   ];
 
-  const FeatureCard = ({ icon, title, description, bgColor }) => (
-    <div className="flex items-start space-x-4 mb-6">
+   const FeatureCard = ({ icon, title, description, bgColor }) => (
+    <div className="flex items-start space-x-4 sm:space-x-5">
       <div
-        className={`w-12 h-12 flex items-center justify-center rounded-full text-white ${bgColor}`}
+        className={`min-w-12 min-h-12 w-12 h-12 flex items-center justify-center rounded-full text-white ${bgColor}`}
       >
         {icon}
       </div>
       <div>
-        <h3 className="text-blue text-lg font-Bebas">{title}</h3>
-        <p className="text-blue text-sm">{description}</p>
+        <h3 className="text-blue text-3xl font-Bebas">
+          {title}
+        </h3>
+        <p className="text-blue text-xl">{description}</p>
       </div>
     </div>
   );
 
   return (
-    <div className="bg-chitu px-20 py-10 min-h-screen">
-      <h2 className="text-4xl md:text-6xl font-Bebas text-gold text-center mb-1">
+    <div className="bg-chitu px-4 sm:px-8 md:px-16 lg:px-30 py-10">
+      {/* Heading */}
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[88px] font-Bebas text-gold text-center mb-3">
         What is UI/UX Design
       </h2>
-      <p className="text-center text-xl max-w-4xl mx-auto text-blue">
-        The goal of User Experience Design (UX design) is to provide products
-        and services that offer significant experiences in a variety of fields.
-        In order to optimise usability and happiness, it involves understanding
-        user needs and behaviours. However, every visual component, motion, and
-        transition in a product works together to provide a smooth and enjoyable
-        user experience by using User Interface (UI) design.
+
+      {/* Paragraphs */}
+      <p className="text-center text-base sm:text-lg md:text-2xl lg:text-3xl max-w-4xl mx-auto text-blue mb-4">
+        he goal of User Experience Design (UX design) is to provide products and services that offer significant experiences in a variety of fields. In order to optimise usability and happiness, it involves understanding user needs and behaviours. However, every visual component, motion, and transition in a product works together to provide a smooth and enjoyable user experience by using User Interface (UI) design.
       </p>
-      <p className="text-lg text-center max-w-4xl mx-auto mb-12 text-blue">
-        In today’s digital world, UX and UI design work together to create
-        user-friendly interfaces that boost engagement and promote success.
+      <p className="text-base sm:text-lg md:text-xl text-center max-w-4xl mx-auto mb-12 text-blue">
+        In today’s digital world, UX and UI design work together to create user-friendly interfaces that boost engagement and promote success.
       </p>
 
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-        <div className="space-y-6">
+      {/* Features + Middle Graphic */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
+        {/* Left column */}
+        <div className="w-full md:w-1/3 space-y-6">
           {featuresLeft.map((feature, index) => (
             <FeatureCard key={index} {...feature} />
           ))}
         </div>
 
-        <div className="relative flex-shrink-0 w-72 h-72">
-          <div className="w-48 h-48 bg-blue rounded-full flex items-center justify-center text-3xl font-bold absolute top-0 left-0 z-10">
+        {/* Middle overlapping circles */}
+        <div className="relative flex-shrink-0 w-60 h-60 sm:w-72 sm:h-72 mb-8 md:mb-0">
+          <div className="w-40 h-40 sm:w-48 sm:h-48 bg-blue rounded-full flex items-center justify-center text-2xl sm:text-3xl text-gold font-bold absolute top-0 right-30 z-50">
             UI
           </div>
-          <div className="w-48 h-48 bg-blueLight rounded-full flex items-center justify-center text-3xl font-bold absolute top-15 left-25 z-0">
+          <div className="w-40 h-40 sm:w-48 sm:h-48 bg-blueLight rounded-full flex items-center justify-center text-chitu text-2xl sm:text-3xl font-bold absolute top-10 left-22 z-0">
             UX
           </div>
         </div>
 
-        <div className="space-y-8">
+        {/* Right column */}
+        <div className="w-full md:w-1/3 space-y-6">
           {featuresRight.map((feature, index) => (
             <FeatureCard key={index} {...feature} />
           ))}

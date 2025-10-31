@@ -12,30 +12,45 @@ export default function FooterSection() {
   return (
     <div className="bg-gold/10 text-blue">
       <div className="max-w-full mx-auto flex flex-col md:flex-row justify-between items-start gap-10 border-t border-gold">
+        {/* LEFT: MAP (Full width on mobile) */}
+        <div className="w-full md:w-auto md:order-first">
+          <iframe
+            title="CodeMechanism Infotech Pvt. Ltd."
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d179.79268804622686!2d76.68293376157128!3d30.70213346531758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fefb1e2997c75%3A0x3c21ad07c027a5ff!2sKodvidya%20Technologies%20Private%20Limited!5e1!3m2!1sen!2sin!4v1756966735049!5m2!1sen!2sin"
+            width="100%"
+            height="250"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="shadow-xl w-full h-[250px] md:w-[300px] md:h-[250px]"
+          />
+        </div>
+
         {/* MIDDLE + RIGHT */}
         <div className="flex flex-col flex-1 mt-1 order-first md:order-none">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             {/* MIDDLE: LOGO & TAGLINE */}
-            <div className="flex flex-col items-center text-center mt-2 md:items-start md:text-left ml-30">
-              <img src={logo} alt="Logo" className="w-40 md:w-60" />
-              <p className="text-2xl md:text-4xl mt-4 font-Bebas text-gold">
+            <div className="flex flex-col items-center text-center w-full mt-2">
+              <img src={logo} alt="Logo" className="w-40 md:w-60 mx-auto" />
+              <p className="text-4xl sm:text-5xl md:text-6xl lg:text-[65px] font-Bebas text-gold leading-tight">
                 Beyond Your Dreams
               </p>
             </div>
 
             {/* RIGHT: CONTACT INFO */}
-            <div className="space-y-2 max-w-lg text-center md:text-left">
-              <h3 className="text-2xl md:text-4xl text-gold font-Bebas">
+            <div className="space-y-1 max-w-lg text-center md:text-left">
+              <h3 className="text-2xl md:text-5xl text-gold font-Bebas ml-5">
                 Get in touch
               </h3>
 
-              <div className="flex items-start justify-center md:justify-start gap-2">
-                <MdLocationPin className="text-red-600 text-2xl md:text-4xl" />
+              <div className="flex items-center justify-center md:justify-start gap-1">
+                <MdLocationPin className="text-red-600 text-2xl md:text-6xl" />
                 <a
                   href="https://maps.app.goo.gl/66EAnyh6sojb3xYb6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue text-sm md:text-base font-Sans hover:underline"
+                  className="text-blue text-xl font-Sans hover:underline"
                 >
                   CodeMechanism Infotech, F-426, 1st Floor, Phase 8B, Industrial
                   Area, Sector 91, SAS Nagar (Mohali), Punjab (160055), India
@@ -43,26 +58,26 @@ export default function FooterSection() {
               </div>
 
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <IoCallSharp className="text-green-400 text-lg md:text-xl" />
+                <IoCallSharp className="text-green-400 text-lg md:text-2xl" />
                 <a href="tel:+91-9594999079">
-                  <p className="text-sm md:text-base font-Sans text-blue hover:underline">
+                  <p className="text-xl font-Sans text-blue hover:underline">
                     +91-95949 99079
                   </p>
                 </a>
               </div>
 
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <IoIosMail className="text-orange-400 text-lg md:text-xl" />
+                <IoIosMail className="text-orange-400 text-lg md:text-2xl" />
                 <a
                   href="mailto:rockyrangra1993@gmail.com"
-                  className="text-blue font-Sans text-sm md:text-base hover:underline"
+                  className="text-blue font-Sans text-xl hover:underline"
                 >
                   info@codemechanism.com
                 </a>
               </div>
 
               {/* SOCIAL ICONS */}
-              <div className="flex justify-center md:justify-start space-x-3 mt-2">
+              <div className="flex justify-center md:justify-start space-x-2">
                 <a
                   href="https://x.com/CodeMechanism"
                   target="_blank"
@@ -71,7 +86,7 @@ export default function FooterSection() {
                   <img
                     src={XIcon}
                     alt="X"
-                    className="w-8 h-8 md:w-10 md:h-10 hover:scale-125 transition"
+                    className="w-8 h-8 md:w-12 md:h-12 hover:scale-125 transition"
                   />
                 </a>
                 <a
@@ -82,7 +97,7 @@ export default function FooterSection() {
                   <img
                     src={linkedinIcon}
                     alt="LinkedIn"
-                    className="w-8 h-8 md:w-10 md:h-10 hover:scale-125 transition"
+                    className="w-8 h-8 md:w-12 md:h-12 hover:scale-125 transition"
                   />
                 </a>
                 <a
@@ -93,38 +108,23 @@ export default function FooterSection() {
                   <img
                     src={instagramIcon}
                     alt="Instagram"
-                    className="w-8 h-8 md:w-10 md:h-10 hover:scale-125 transition"
+                    className="w-8 h-8 md:w-12 md:h-12 hover:scale-125 transition"
                   />
                 </a>
                 <a href="mailto:rockyrangra1993@gmail.com">
                   <img
                     src={gmailIcon}
                     alt="Gmail"
-                    className="w-8 h-8 md:w-10 md:h-10 hover:scale-125 transition"
+                    className="w-8 h-8 md:w-12 md:h-13 hover:scale-125 transition"
                   />
                 </a>
               </div>
             </div>
           </div>
         </div>
-
-        {/* LEFT: MAP (above copyright on mobile, left side on desktop) */}
-        <div className="flex-shrink-0 md:order-first">
-          <iframe
-            title="CodeMechanism Infotech Pvt. Ltd."
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d179.79268804622686!2d76.68293376157128!3d30.70213346531758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fefb1e2997c75%3A0x3c21ad07c027a5ff!2sKodvidya%20Technologies%20Private%20Limited!5e1!3m2!1sen!2sin!4v1756966735049!5m2!1sen!2sin"
-            width="100%"
-            height="220"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="shadow-xl md:w-[300px] md:h-[250px] md:mt-0"
-          />
-        </div>
       </div>
 
-      {/* COPYRIGHT always last */}
+      {/* COPYRIGHT */}
       <div className="text-center text-md mt-3 md:mt-1 font-sans text-blue">
         © 2025 CodeMechanism Infotech Private Limited. All Rights Reserved
       </div>

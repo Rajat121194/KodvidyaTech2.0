@@ -56,13 +56,14 @@ const AppSolutions = () => {
   ];
 
   return (
-    <section className="px-20 py-15 bg-chitu">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-12 flex flex-col md:flex-row md:justify-between">
-          <h2 className="text-6xl text-gold font-Bebas">
+    <section className="px-4 sm:px-6 md:px-10 lg:px-30 py-10 sm:py-16 md:py-20 bg-chitu">
+      <div className="mx-auto">
+        {/* Header */}
+        <div className="mb-10 flex flex-col md:flex-row md:justify-between gap-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[72px] text-gold font-Bebas leading-tight">
             Mobile Application Solutions for Specific Industries
           </h2>
-          <p className="text-blue text-xl max-w-xl mt-6 md:mt-0">
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl">
             Our expertise is in delivering custom mobile application services to
             a range of categories. We are experienced at providing cutting-edge
             digital solutions to businesses of all sizes, quickly and skillfully
@@ -70,38 +71,41 @@ const AppSolutions = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Accordion Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className={`bg-chitu shadow-md rounded-lg p-6 cursor-pointer transition-all duration-300 border-l-4 ${industry.borderColor}`}
+              className={`bg-chitu shadow-md rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-300 border-l-4 ${industry.borderColor}`}
               onClick={() => toggleDropdown(index)}
             >
+              {/* Title + Icon */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div
-                    className={`w-14 h-14 rounded-full flex items-center justify-center ${industry.iconBg}`}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center ${industry.iconBg}`}
                   >
                     {industry.icon}
                   </div>
-                  <h3 className={`text-xl font-semibold ${industry.textTint}`}>
+                  <h3 className={`text-xl sm:text-2xl md:text-3xl font-semibold ${industry.textTint}`}>
                     {industry.title}
                   </h3>
                 </div>
                 {openIndex === index ? (
-                  <MdArrowDropUp className="w-5 h-5" />
+                  <MdArrowDropUp className="w-6 h-6 sm:w-8 sm:h-8" />
                 ) : (
-                  <MdArrowDropDown className="w-5 h-5" />
+                  <MdArrowDropDown className="w-6 h-6 sm:w-8 sm:h-8" />
                 )}
               </div>
 
+              {/* Dropdown Content */}
               <div
                 className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? "max-h-60 mt-4" : "max-h-0"
+                  openIndex === index ? "max-h-80 mt-4" : "max-h-0"
                 }`}
               >
                 <div
-                  className={`rounded-md p-4 mt-2 ${industry.bgTint} text-blue overflow-y-auto max-h-40 md:max-h-fit`}
+                  className={`rounded-md p-4 mt-2 ${industry.bgTint} text-blue text-sm sm:text-base md:text-lg leading-relaxed`}
                 >
                   <p>{industry.description}</p>
                 </div>

@@ -3,29 +3,28 @@ import mpImage from "../../../assets/pictures/mp.jpg";
 
 const MobileAppServices = () => {
   return (
-    <section className="bg-gold/10 px-15 py-20">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-        <div className="w-full">
+    <section className="bg-gold/10 px-4 sm:px-8 md:px-16 lg:px-30 py-10 sm:py-12 md:py-16 lg:py-20">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Image Section */}
+        <div className="w-full order-1 md:order-none">
           <img
             src={mpImage}
             alt="Mobile App Development"
-            className="rounded-md w-full h-auto object-cover"
+            className="rounded-2xl w-[95%] h-auto object-cover shadow-gold shadow-sm hover:shadow-2xl transition-shadow duration-300"
           />
         </div>
 
-        <div>
-          <h2 className="text-6xl font-Bebas text-gold mb-3">
-            What we offer in Mobile App Development Services
+        {/* Content Section */}
+        <div className="space-y-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+            What We Offer in Mobile App Development Services
           </h2>
-          <p className="text-blue text-xl font-Sans mb-3">
-            We provide a variety of mobile app development services that are
-            customised to meet your specific needs. We customise our services to
-            meet your goals and budget, whether you need apps for particular
-            platforms, cross-platform solutions, or development for a new
-            platform.
+
+          <p className="sm:text-xl md:text-2xl lg:text-3xl text-blue font-Sans">
+            We provide a variety of mobile app development services that are customised to meet your specific needs. We customise our services to meet your goals and budget, whether you need apps for particular platforms, cross-platform solutions, or development for a new platform.
           </p>
 
-          <ul className="text-md space-y-2 text-blue">
+          <ul className="text-base sm:text-lg md:text-xl text-blue space-y-2">
             {[
               "Custom iOS and Android apps development",
               "Native and cross-platform solutions",
@@ -35,7 +34,7 @@ const MobileAppServices = () => {
               "Automated QA and testing",
             ].map((item, index) => (
               <li key={index} className="flex items-start gap-3">
-                <TiTickOutline className="text-gold font-Sans mt-1" />
+                <TiTickOutline className="text-gold mt-1 text-xl md:text-2xl flex-shrink-0" />
                 <span>{item}</span>
               </li>
             ))}

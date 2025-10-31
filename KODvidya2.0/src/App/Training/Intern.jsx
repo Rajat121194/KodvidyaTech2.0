@@ -56,46 +56,52 @@ export default function TrainingPrograms() {
   const bgColors = ["bg-chitu", "bg-chitu", "bg-chitu"];
 
   return (
-    <div className="max-w-6xl mx-auto p-6 text-center bg-gold/10">
-      <h2 className="text-6xl md:text-6xl font-Bebas text-gold mb-2">
-        Our culture is a reflection of our shared values, attitudes, beliefs,
-        and working practices.
+    <div className="max-w-full mx-auto px-4 sm:px-10 md:px-20 lg:px-30 py-10 text-center bg-gold/10">
+      {/* Headings */}
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[88px] font-Bebas text-gold mb-4 leading-tight">
+        Our culture is a reflection of our shared values, attitudes, beliefs, and working practices.
       </h2>
-      <p className="text-4xl font-Sans text-blue mb-1">
+
+      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-Sans text-blue mb-2">
         Industrial Training / Internship Programs
       </p>
-      <p className="text-2xl text-blue font-Sans mb-2">
+
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue font-Sans mb-4">
         45 days / 3 months / 6 months
       </p>
-      <p className="text-2xl text-blue font-Sans mb-8">
+
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue font-Sans mb-10">
         Email us your resume at:{" "}
         <a
           href="mailto:rockyrangra1993@gmail.com"
-          className="underline font-semibold text-gold"
+          className="underline font-semibold text-gold break-words"
         >
           rockyrangra1993@gmail.com
         </a>
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 scale-90">
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
         {programs.map((program, idx) => (
           <div
             key={idx}
-            className={`rounded-[30px] transform transition-transform hover:scale-105 hover:rotate-1 p-6 text-left shadow-xl ${
+            className={`rounded-[25px] transform transition-transform hover:scale-105 hover:rotate-1 p-5 sm:p-6 text-left shadow-xl ${
               bgColors[idx % bgColors.length]
             }`}
           >
-            <h3 className="text-3xl font-Bebas text-gold mb-2">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-Bebas text-gold mb-3 leading-tight">
               {program.title}
             </h3>
-            <p className="text-lg text-blue font-Sans mb-2">
+
+            <p className="text-base sm:text-lg md:text-2xl text-blue font-Sans mb-4 leading-relaxed">
               {program.description}
             </p>
+
             <div className="flex flex-wrap gap-2">
               {program.tags.map((tag, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 text-xs bg-blue text-gold rounded-full font-Sans"
+                  className="px-3 py-1 text-sm sm:text-md bg-blue text-gold rounded-full font-Sans"
                 >
                   {tag}
                 </span>

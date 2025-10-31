@@ -13,7 +13,7 @@ function Navbar() {
   const [showSecondBar, setShowSecondBar] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHireFormOpen, setIsHireFormOpen] = useState(false);
-  const [loading, setLoading] = useState(false); // ✅ new loading state
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,7 +30,7 @@ function Navbar() {
   const mobileMenuRef = useRef(null);
   const location = useLocation();
 
-  // Scroll behavior for second bar
+  // ✅ Scroll behavior
   const controlSecondBar = () => {
     const currentScrollY = window.scrollY;
     setShowSecondBar(
@@ -44,23 +44,20 @@ function Navbar() {
     return () => window.removeEventListener("scroll", controlSecondBar);
   }, []);
 
-  // Prevent body scroll when menus or modal open
+  // ✅ Prevent scroll when menu/modal open
   useEffect(() => {
     document.body.style.overflow =
       isMobileMenuOpen || isHireFormOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen, isHireFormOpen]);
 
-  // Close mobile menu when clicking outside
+  // ✅ Close mobile menu if clicked outside
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target)
-      ) {
+    const handleClickOutside = (e) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
         setIsMobileMenuOpen(false);
         setIsDropdownOpen(false);
       }
-    }
+    };
     if (isMobileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
@@ -69,7 +66,7 @@ function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobileMenuOpen]);
 
-  // Form handlers
+  // ✅ Form handling
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -85,7 +82,6 @@ function Navbar() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const data = await res.json();
 
       if (res.ok) {
@@ -97,6 +93,7 @@ function Navbar() {
           phone: "",
           message: "",
         });
+        setTimeout(() => setIsHireFormOpen(false), 2500);
       } else {
         setFormStatus({
           type: "error",
@@ -106,10 +103,6 @@ function Navbar() {
 
       setShowMessage(true);
       setTimeout(() => setShowMessage(false), 2000);
-
-      if (res.ok) {
-        setTimeout(() => setIsHireFormOpen(false), 2500);
-      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setFormStatus({
@@ -125,7 +118,7 @@ function Navbar() {
 
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "About Us", path: "/about" },
+    { label: "AboutUs", path: "/about" },
     { label: "Portfolio", path: "/portfolio" },
     { label: "Services", path: "/services" },
     { label: "Careers", path: "/careers" },
@@ -146,29 +139,25 @@ function Navbar() {
   return (
     <>
       {/* ---------- TOP BAR ---------- */}
-      <div className="hidden lg:flex fixed top-0 left-0 w-full z-[1000] bg-kalu/10 backdrop-blur-md px-8 lg:px-23 justify-between items-center shadow-md h-16">
-        {/* Logo */}
-        <div className="flex items-center space-x-3 cursor-pointer">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="h-15 w-auto object-contain" />
-          </Link>
-        </div>
+      <div className="hidden lg:flex fixed top-0 left-0 w-full z-[1000] bg-kalu/10 backdrop-blur-md px-8 lg:px-30 justify-between items-center shadow-sm shadow-gold h-18">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="h-17 w-auto object-contain" />
+        </Link>
 
-        {/* Social + Hire Us */}
-        <div className="flex items-center -space-x-4 group transition-all duration-500">
+        <div className="flex items-center -space-x-5 group">
           <a
             href="https://www.instagram.com/codemechanism_infotech/"
             target="_blank"
             rel="noreferrer"
             className="animate-[bounce_1.5s_ease-in-out_infinite]"
           >
-            <img src={ig} alt="Instagram" className="h-10 w-12" />
+            <img src={ig} alt="Instagram" className="h-12 w-14" />
           </a>
           <a
             href="mailto:rockyrangra1993@gmail.com"
             className="animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.3s]"
           >
-            <img src={gmail} alt="Gmail" className="h-12 w-11" />
+            <img src={gmail} alt="Gmail" className="h-13 w-13" />
           </a>
           <a
             href="https://www.linkedin.com/company/codemechanism/"
@@ -176,13 +165,12 @@ function Navbar() {
             rel="noreferrer"
             className="animate-[bounce_1.5s_ease-in-out_infinite] [animation-delay:0.6s]"
           >
-            <img src={linkedin} alt="LinkedIn" className="h-10 w-12" />
+            <img src={linkedin} alt="LinkedIn" className="h-12 w-14" />
           </a>
 
-          {/* Hire Us */}
           <button
             onClick={() => setIsHireFormOpen(true)}
-            className="ml-12 bg-gold text-chitu px-4 py-2 rounded-full hover:bg-chitu cursor-pointer hover:text-gold hover:border-gold border transition"
+            className="ml-12 bg-gold text-chitu px-5 py-2 rounded-full hover:bg-chitu hover:text-gold border hover:border-gold transition"
           >
             Hire Us
           </button>
@@ -191,8 +179,8 @@ function Navbar() {
 
       {/* ---------- SECOND BAR ---------- */}
       <div
-        className={`hidden lg:flex fixed left-0 w-full z-[999] bg-gold/10 backdrop-blur-md px-20 font-Sans font-semibold transition-transform duration-500 ease-in-out ${
-          showSecondBar ? "translate-y-[60px]" : "translate-y-0"
+        className={`hidden lg:flex fixed left-0 w-full z-[999] bg-gold/10 backdrop-blur-md px-30 font-Sans text-[16px] font-semibold shadow-sm shadow-gold transition-transform duration-500 ease-in-out ${
+          showSecondBar ? "translate-y-[70px]" : "translate-y-0"
         }`}
         style={{ top: "0px" }}
       >
@@ -249,11 +237,18 @@ function Navbar() {
       </div>
 
       {/* ---------- MOBILE NAVBAR ---------- */}
-      <div className="lg:hidden fixed top-0 left-0 w-full z-[1000] bg-chitu/60 backdrop-blur-md shadow-md">
+      <div className="lg:hidden fixed top-0 left-0 w-full z-[1000] bg-chitu/70 backdrop-blur-md shadow-md">
         <div className="flex justify-between items-center h-16 px-4">
           <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              if (isMobileMenuOpen) {
+                setIsMobileMenuOpen(false);
+                setIsDropdownOpen(false);
+              } else {
+                setIsMobileMenuOpen(true);
+              }
+            }}
             className="text-gold font-extrabold text-2xl"
           >
             {isMobileMenuOpen ? "✖" : "☰"}
@@ -262,22 +257,23 @@ function Navbar() {
 
         <div
           ref={mobileMenuRef}
-          className={`${
-            isMobileMenuOpen ? "max-h-screen" : "max-h-0"
-          } overflow-hidden transition-all duration-300 bg-chitu/60`}
+          className={`transition-all duration-500 overflow-hidden bg-chitu/90 ${
+            isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 py-0"
+          }`}
         >
-          <div className="flex flex-col px-4 py-4 space-y-3 font-semibold">
+          <div className="flex flex-col px-4 space-y-4 font-semibold">
             {navItems.map((item, index) =>
               item.label.toLowerCase() === "services" ? (
                 <div key={index}>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="w-full text-left py-2 px-2 text-blue font-semibold hover:underline"
+                    className="w-full text-left py-2 px-2 text-blue font-semibold hover:text-gold transition"
                   >
                     {item.label}
                   </button>
+
                   {isDropdownOpen && (
-                    <ul className="ml-4">
+                    <ul className="ml-5 mt-1 border-l-2 border-gold pl-2 space-y-1 transition-all duration-300 ease-in-out">
                       {serviceLinks.map((service, idx) => (
                         <Link
                           key={idx}
@@ -286,7 +282,7 @@ function Navbar() {
                             setIsMobileMenuOpen(false);
                             setIsDropdownOpen(false);
                           }}
-                          className={`block px-2 py-1 text-md ${getLinkClass(
+                          className={`block py-1 text-base hover:text-gold transition ${getLinkClass(
                             service.path
                           )}`}
                         >
@@ -301,7 +297,7 @@ function Navbar() {
                   key={index}
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block py-2 px-2 rounded ${getLinkClass(
+                  className={`block py-2 px-2 rounded-md text-blue hover:text-gold transition ${getLinkClass(
                     item.path
                   )}`}
                 >
@@ -309,11 +305,21 @@ function Navbar() {
                 </Link>
               )
             )}
+
+            <button
+              onClick={() => {
+                setIsHireFormOpen(true);
+                setIsMobileMenuOpen(false);
+              }}
+              className="mt-4 bg-gold text-chitu font-bold py-2 rounded-full hover:bg-chitu hover:text-gold border hover:border-gold transition"
+            >
+              Hire Us
+            </button>
           </div>
         </div>
       </div>
 
-      {/* ---------- HIRE US  ---------- */}
+      {/* ---------- HIRE US MODAL ---------- */}
       {isHireFormOpen && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg p-6 relative">
@@ -327,12 +333,11 @@ function Navbar() {
               Hire Us
             </h2>
 
-            {/* Success/Error message */}
             {formStatus.message && (
               <div
-                className={`text-center py-2 px-3 rounded mb-3 transition-opacity duration-500 ${
+                className={`text-center py-2 px-3 rounded mb-3 ${
                   showMessage ? "opacity-100" : "opacity-0"
-                } ${
+                } transition-opacity duration-500 ${
                   formStatus.type === "success"
                     ? "bg-green-100 text-green-800"
                     : "bg-red-100 text-red-800"
@@ -349,8 +354,8 @@ function Navbar() {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
                 required
+                className="w-full border rounded-md px-3 py-2 focus:ring-2 focus:ring-gold"
               />
               <input
                 type="email"
@@ -358,8 +363,8 @@ function Navbar() {
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
                 required
+                className="w-full border rounded-md px-3 py-2 focus:ring-2 focus:ring-gold"
               />
               <input
                 type="text"
@@ -367,7 +372,7 @@ function Navbar() {
                 placeholder="Company Name"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
+                className="w-full border rounded-md px-3 py-2 focus:ring-2 focus:ring-gold"
               />
               <PhoneInput
                 country={"in"}
@@ -382,7 +387,7 @@ function Navbar() {
                 rows="3"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
+                className="w-full border rounded-md px-3 py-2 focus:ring-2 focus:ring-gold"
               />
 
               <button
@@ -392,7 +397,6 @@ function Navbar() {
                 Submit
               </button>
 
-              {/* ✅ Loader Overlay  */}
               {loading && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-[3000]">
                   <div className="flex flex-col items-center space-y-4">

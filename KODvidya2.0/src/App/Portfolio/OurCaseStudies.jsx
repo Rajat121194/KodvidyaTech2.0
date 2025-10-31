@@ -262,25 +262,27 @@ const CaseStudies = () => {
   }, [selectedCaseStudy]);
 
   return (
-    <section className="py-20 px-4 md:px-16">
+    <section className="py-20 px-4 md:px-30">
       {/* Header */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-        <div className="flex-1">
-          <h2 className="text-6xl md:text-6xl text-gold font-Bebas text-left">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full">
+        {/* Left Section */}
+        <div className="flex-1 text-center md:text-left mb-8 md:mb-0">
+          <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px] mb-4">
             Our Case Studies
           </h2>
-          <p className="text-xl font-Sans text-blue max-w-xl text-left mt-2">
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-2xl mx-auto md:mx-0">
             Producing engaging case studies entails showcasing accomplished
-            projects and proving the company s proficiency, aptitude for
+            projects and proving the company’s proficiency, aptitude for
             addressing problems, and value to customers. This is a methodical
             process for creating impactful case studies:
           </p>
         </div>
-        <div className="flex-1 flex justify-center md:justify-end mb-6">
+        {/* Right Section */}
+        <div className="flex-1 flex justify-center md:justify-end">
           <img
             src={centerImg}
             alt="Case Studies Illustration"
-            className="w-[600px] h-auto object-contain rounded-lg"
+            className="w-full max-w-[700px] h-auto object-contain"
           />
         </div>
       </div>
@@ -297,9 +299,11 @@ const CaseStudies = () => {
               <img
                 src={item.images?.[0]?.src || item.src}
                 alt={item.alt}
-                className="w-full h-64 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                className="w-full h-80 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center p-4 text-center">
+
+              {/* Overlay for larger screens */}
+              <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition duration-300 hidden sm:flex flex-col items-center justify-center p-4 text-center">
                 <h3 className="text-2xl font-semibold text-gold">
                   {item.title || item.images?.[0]?.title}
                 </h3>
@@ -313,6 +317,19 @@ const CaseStudies = () => {
                   View Project
                 </button>
               </div>
+
+              {/* Always visible content for mobile */}
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 bg-black/70 p-4 text-center">
+                <h3 className="text-lg font-semibold text-gold">
+                  {item.title || item.images?.[0]?.title}
+                </h3>
+                <button
+                  onClick={() => handleOpen(caseStudies.indexOf(item))}
+                  className="mt-2 bg-gold text-blue font-semibold px-4 py-2 rounded-lg shadow-md w-full hover:bg-blue hover:text-gold transition"
+                >
+                  View Project
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -322,9 +339,11 @@ const CaseStudies = () => {
           <img
             src={caseStudies[2].src}
             alt={caseStudies[2].alt}
-            className="w-full h-72 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            className="w-full h-80 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center p-4 text-center">
+
+          {/* Overlay for desktop */}
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 hidden sm:flex flex-col items-center justify-center p-4 text-center">
             <h3 className="text-xl font-bold text-gold">
               {caseStudies[2].title}
             </h3>
@@ -334,6 +353,19 @@ const CaseStudies = () => {
             <button
               onClick={() => handleOpen(2)}
               className="mt-4 bg-gold text-blue font-bold px-6 py-2 rounded-lg shadow-md hover:bg-blue hover:text-gold transition"
+            >
+              View Project
+            </button>
+          </div>
+
+          {/* Always visible content for mobile */}
+          <div className="sm:hidden absolute bottom-0 left-0 right-0 bg-black/70 p-4 text-center">
+            <h3 className="text-lg font-semibold text-gold">
+              {caseStudies[2].title}
+            </h3>
+            <button
+              onClick={() => handleOpen(2)}
+              className="mt-2 bg-gold text-blue font-semibold px-4 py-2 rounded-lg shadow-md w-full hover:bg-blue hover:text-gold transition"
             >
               View Project
             </button>
@@ -350,14 +382,29 @@ const CaseStudies = () => {
               <img
                 src={item.src}
                 alt={item.alt}
-                className="w-full h-64 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                className="w-full h-80 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col items-center justify-center p-4 text-center">
+
+              {/* Overlay for larger screens */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 hidden sm:flex flex-col items-center justify-center p-4 text-center">
                 <h3 className="text-xl font-bold text-gold">{item.title}</h3>
                 <p className="text-white text-sm">{item.description}</p>
                 <button
                   onClick={() => handleOpen(caseStudies.indexOf(item))}
                   className="mt-4 bg-gold text-blue font-bold px-6 py-2 rounded-lg shadow-md hover:bg-blue hover:text-gold transition"
+                >
+                  View Project
+                </button>
+              </div>
+
+              {/* Always visible content for mobile */}
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 bg-blue/70 p-4 text-center">
+                <h3 className="text-lg font-semibold text-gold">
+                  {item.title}
+                </h3>
+                <button
+                  onClick={() => handleOpen(caseStudies.indexOf(item))}
+                  className="mt-2 bg-gold text-blue font-semibold px-4 py-2 rounded-lg shadow-md w-full hover:bg-blue hover:text-gold transition"
                 >
                   View Project
                 </button>
@@ -370,7 +417,7 @@ const CaseStudies = () => {
       {/* Modal */}
       {selectedCaseStudy && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 transition-opacity">
-          <div className="bg-white max-w-2xl w-[90vw] max-h-[85vh] rounded-xl p-4 relative transform transition-all duration-300 scale-90 flex flex-col overflow-hidden">
+          <div className="bg-white max-w-2xl w-[90vw] max-h-[85vh] rounded-xl p-5 relative transform transition-all duration-300 scale-110 flex flex-col overflow-hidden">
             <button
               onClick={handleClose}
               className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"

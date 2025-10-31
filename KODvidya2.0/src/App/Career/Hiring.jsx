@@ -35,10 +35,10 @@ export default function Hiring() {
   return (
     <section className="bg-gold/10 py-10 px-6 md:px-16">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-6xl sm:text-4xl md:text-6xl font-Bebas text-gold mb-1">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold mb-1">
           We're hiring and can't wait to meet you!
         </h2>
-        <p className="text-blue max-w-3xl mx-auto text-xl">
+        <p className="text-blue max-w-3xl mx-auto sm:text-xl md:text-2xl lg:text-3xl">
           That’s wonderful news! An important tool for attracting bright people
           who share CodeMechanism Infotech’s mission and values are hiring
           announcements. Here are a few powerful methods to communicate this
@@ -46,14 +46,14 @@ export default function Hiring() {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto mt-12 space-y-4">
+      <div className="max-w-6xl mx-auto mt-12 space-y-4">
         {hiringData.map((item, idx) => (
           <div
             key={idx}
             className="flex justify-between items-start bg-chitu p-6 rounded-md border border-gold hover:shadow-lg transition duration-300"
           >
             <div className="flex gap-6 w-full">
-              <p className="text-blue font-Bebas text-lg">{item.number}</p>
+              <p className="text-blue font-Bebas text-2xl">{item.number}</p>
               <div className="w-full">
                 <div className="group">
                   <h3 className="text-2xl sm:text-3xl  text-blue font-Bebas mb-1 cursor-pointer">

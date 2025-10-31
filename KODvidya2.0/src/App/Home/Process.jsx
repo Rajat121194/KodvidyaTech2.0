@@ -4,28 +4,19 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ✅ Helper to read CSS variables
 const getCSSVar = (name) =>
   getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
-// Helper: split text into word spans while preserving spaces
-const SplitToWordSpans = ({ text, wordClass = "" }) => {
+const SplitToWordSpans = ({ text }) => {
   const words = text.split(" ");
   return (
     <>
-      {words.map((w, i) => {
-        const isLast = i === words.length - 1;
-        return (
-          <span
-            key={i}
-            className={wordClass}
-            style={{ display: "inline-block", whiteSpace: "pre" }}
-          >
-            {w}
-            {isLast ? "" : " "}
-          </span>
-        );
-      })}
+      {words.map((w, i) => (
+        <span key={i} style={{ display: "inline-block", whiteSpace: "pre" }}>
+          {w}
+          {i < words.length - 1 ? " " : ""}
+        </span>
+      ))}
     </>
   );
 };
@@ -45,30 +36,19 @@ const SoftwareDevelopmentProcess = () => {
       const headingWords = headingRef.current.querySelectorAll("span");
       const paraWords = paraRef.current.querySelectorAll("span");
 
-      // initial styles
-      gsap.set(headingWords, {
-        color: yellowLight,
-        opacity: 0.95,
-        y: 0,
-        willChange: "color, opacity, transform",
-      });
+      gsap.set(headingWords, { color: yellowLight, opacity: 0.95, y: 0 });
+      gsap.set(paraWords, { color: blueLight, opacity: 0.9, y: 6 });
 
-      gsap.set(paraWords, {
-        color: blueLight,
-        opacity: 0.9,
-        y: 8,
-      });
+      const isMobile = window.innerWidth < 768;
 
-      // scroll animation
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top center",
-          end: "+=100",
-          scrub: 0.1,
-          pin: headingRef.current,
-          pinSpacing: true,
-          anticipatePin: 1,
+          end: "+=50",
+          scrub: 0.2,
+          pin: isMobile ? headingRef.current : false,
+          pinSpacing: isMobile,
         },
       });
 
@@ -78,8 +58,8 @@ const SoftwareDevelopmentProcess = () => {
           color: gold,
           opacity: 1,
           y: -2,
-          duration: 3.45,
-          stagger: 0.9,
+          duration: 2.5,
+          stagger: 0.15,
           ease: "power2.out",
         },
         0
@@ -91,40 +71,48 @@ const SoftwareDevelopmentProcess = () => {
           color: blue,
           opacity: 1,
           y: 0,
-          duration: 4.2,
-          stagger: 0.9,
+          duration: 3,
+          stagger: 0.05,
           ease: "power2.out",
         },
-        "+=0.2"
+        "-=2.2"
       );
     }, containerRef);
+
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
 
     return () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <section className="py-10 px-6 md:px-20" ref={containerRef}>
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
-          <div className="flex justify-start items-start">
+    <section
+      className="py-10 px-4 sm:px-8 md:px-16 lg:px-20"
+      ref={containerRef}
+    >
+      <div className="max-w-[1300px] mx-auto flex flex-col items-center md:items-stretch">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
+          
+          {/* Heading */}
+          <div className="flex justify-center md:justify-start">
             <h2
               ref={headingRef}
-              className="text-6xl md:text-6xl mb-1 font-Bebas leading-tight"
+              className="text-3xl sm:text-4xl md:text-[45px] lg:text-[65px] font-Bebas text-blue leading-[1.2] sm:leading-[1.3] lg:leading-[70px] text-center md:text-left md:pt-[20px] lg:pt-[60px] px-2 sm:px-0"
               aria-label="Our Software Development Process"
-              style={{ lineHeight: 1 }}
             >
               <SplitToWordSpans text="Our Software Development Process" />
             </h2>
           </div>
 
-          <div className="flex justify-center md:justify-end mt-4 items-center">
+          {/* Paragraph */}
+          <div className="flex justify-center md:justify-end">
             <p
               ref={paraRef}
-              className="text-2xl font-Sans"
-              style={{ maxWidth: 520 }}
+              className="text-blue text-base sm:text-lg md:text-xl lg:text-[22px] font-Sans max-w-[95%] sm:max-w-2xl mx-auto md:mx-0 leading-[28px] sm:leading-[32px] mt-2 sm:mt-1 md:mt-2 lg:mt-3 text-center md:text-left"
             >
               <SplitToWordSpans text="We proceed with few essential phases in our software development process. To deliver quality work and to gain your confidence, we guarantee a complete hold of your demands, careful planning, and exact implementation, which comes in detailed testing and a smooth deployment." />
             </p>

@@ -1,10 +1,10 @@
 import React from "react";
 import bgVideoLandscape from "/src/assets/videos/you.mp4";
-import bgVideoPortrait from "/src/assets/videos/you-vertical.mp4";
+import bgVideoPortrait from "/src/assets/videos/you-vertical2.mp4";
 
 const WhoWeAre = () => {
   return (
-    <section className="relative bg-kalu text-chitu py-25 overflow-hidden">
+    <section className="relative py-32 sm:py-40 md:py-62 overflow-hidden">
       {/* Desktop / Tablet Video */}
       <video
         className="hidden md:block absolute inset-0 w-full h-full object-cover"
@@ -24,28 +24,29 @@ const WhoWeAre = () => {
         muted
         playsInline
       />
-
-      {/* Overlay */}
       <div className="absolute inset-0"></div>
 
       {/* Content */}
-      <div className="relative z-10 text-right mr-10 mt-10">
-        <h1 className="text-6xl text-gold font-Bebas">Who We Are</h1>
-        <p className="text-xl tracking-tight font-Sans text-blue">
-          CodeMechanism Infotech
-        </p>
-      </div>
+      <div className="relative z-10 px-6 sm:px-10 md:px-16 lg:px-24">
+        {/* Heading */}
+        <div className="text-right mb-6 sm:mb-10">
+          <h1 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
+            Who We Are
+          </h1>
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px]">
+            CodeMechanism Infotech
+          </p>
+        </div>
 
-      <div className="relative z-10 w-full md:w-3/4 lg:w-1/2 ml-auto text-right p-12">
-        <h2 className="text-5xl text-gold font-Sans mb-2">Hey Everyone!</h2>
-        <p className="text-2xl text-blue font-Sans">
-          Greetings from CodeMechanism Infotech! Our team of full stack
-          developers and digital experts has successfully serviced over 219
-          clients and completed over 367 projects, building 10–12 years of
-          industry experience between them. Our experts are committed to
-          developing cutting-edge solutions that support business growth and
-          offer success.
-        </p>
+        {/* Description */}
+        <div className="w-full md:w-4/5 lg:w-1/2 ml-auto text-right space-y-3 sm:space-y-4 md:space-y-6">
+          <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
+            Hey Everyone!
+          </h2>
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans pl-20 leading-relaxed md:leading-[32px]">
+            Greetings from CodeMechanism Infotech! Our team of full stack developers and digital experts has successfully serviced over 219 clients and completed over 367 projects, building 10–12 years of industry experience between them. Our experts are committed to developing cutting-edge solutions that support business growth and offer success.
+          </p>
+        </div>
       </div>
     </section>
   );

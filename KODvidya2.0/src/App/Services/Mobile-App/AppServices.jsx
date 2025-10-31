@@ -32,34 +32,36 @@ const services = [
 
 export default function MobileServices() {
   return (
-    <section className="bg-gold/10 py-25 px-15">
-      <div className="text-center max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-6xl text-gold font-Bebas mb-1">
-          Mobile Application Development
-          <br /> Services For Various Platforms
+    <section className="bg-gold/10 py-10 px-4 sm:px-8 md:px-16 lg:px-20">
+      {/* Header */}
+      <div className="text-center max-w-7xl mx-auto">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] text-gold font-Bebas mb-4">
+          Mobile Application Development Services For Various Platforms
         </h2>
-        <p className="text-xl md:text-xl text-blue">
+        <p className="sm:text-xl md:text-2xl lg:text-3xl text-blue font-Sans">
           We make sure every app contributes to your long-term success by
-          concentrating on developing your brand identification and promoting
-          business growth. With more than ten years of experience, our mobile
-          app developers have developed solutions that satisfy customer
-          requirements.
+          concentrating on developing your brand identity and promoting
+          business growth. With over a decade of experience, our mobile app
+          developers have built solutions that satisfy customer needs.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-7xl mx-auto">
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 px-10">
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-blue border border-gold rounded-2xl p-6 text-center shadow-md hover:shadow-xl hover:shadow-gold transition"
+            className="bg-blue border border-gold rounded-2xl p-6 text-center shadow-md hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 transform hover:-translate-y-2"
           >
-            <div className="bg-gold text-chitu inline-block p-3 rounded-full">
+            <div className="bg-gold text-chitu inline-block p-3 rounded-full mb-4">
               {service.icon}
             </div>
-            <h3 className="text-xl font-Bebas mb-2 text-gold">
+            <h3 className="text-2xl sm:text-3xl font-Bebas mb-3 text-gold leading-snug">
               {service.title}
             </h3>
-            <p className="text-sm font-Sans text-gold">{service.description}</p>
+            <p className="text-base sm:text-lg md:text-xl text-gold font-Sans leading-relaxed">
+              {service.description}
+            </p>
           </div>
         ))}
       </div>

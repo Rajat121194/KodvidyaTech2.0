@@ -105,16 +105,14 @@ function PaginationDots({ total, currentIndex, setCurrentIndex }) {
     <div className="flex items-center justify-center gap-4">
       <div className="flex relative w-20 justify-between">
         {visibleDots.map((dotIndex, idx) => {
-          const isActive = idx === 1; // middle dot
+          const isActive = idx === 1;
           return (
             <div
               key={dotIndex}
               onClick={() => setCurrentIndex(dotIndex)}
-              className={`
-                w-5 h-3 rounded-full cursor-pointer 
-                transition-transform duration-500 ease-in-out
-                ${isActive ? "bg-gold scale-125" : "bg-blue scale-30"}
-              `}
+              className={`w-5 h-3 rounded-full cursor-pointer transition-transform duration-500 ease-in-out ${
+                isActive ? "bg-gold scale-125" : "bg-blue scale-30"
+              }`}
             ></div>
           );
         })}
@@ -143,18 +141,19 @@ export default function TestimonialCarousel() {
   }, []);
 
   return (
-    <div className="w-full px-4 py-25 bg-gold/10">
-      <div className="container mx-auto">
-        <h2 className="text-6xl text-center mb-2 text-gold font-Bebas">
-          Happy Clients
-        </h2>
-        <p className="text-center text-xl sm:text-xl text-blue font-Sans mb-10">
-          Having served more than 250 clients, we are happy to share their
-          testimonials.
-        </p>
+    <div className="w-full h-full px-4 py-10 bg-gold/10">
+      <div className="container mx-auto text-center">
+  {/* Updated consistent typography */}
+        <h2 className="text-4xl sm:text-5xl md:text-[45px] lg:text-[65px] font-Bebas text-gold leading-[70px] md:pt-0 md:pt-[60px]">
+        Happy Clients
+       </h2>
+           <p className="text-blue sm:text-xl md:text-2xl lg:text-[22px] font-Sans mb-5 max-w-[90%] sm:max-w-2xl mx-auto leading-[32px] mt-6 text-center">
+           Having served more than 250 clients, we are happy to share their
+            testimonials.
+           </p>
 
         {/* Desktop Carousel */}
-        <div className="hidden lg:flex relative items-center justify-center max-w-7xl mx-auto">
+        <div className="hidden lg:flex relative items-center justify-center mx-auto">
           {/* Left Button */}
           <button
             onClick={prevSlide}
@@ -164,17 +163,17 @@ export default function TestimonialCarousel() {
           </button>
 
           {/* Testimonial Cards */}
-          <div className="relative w-full max-w-5xl min-h-[480px] flex items-center justify-center overflow-hidden">
+          <div className="relative w-full min-h-[560px] flex items-center justify-center overflow-hidden">
             {testimonials.map((t, i) => {
               let position = "hidden";
-              if (i === currentIndex) position = "z-20 scale-100 opacity-100";
+              if (i === currentIndex) position = "z-20 scale-130 opacity-100";
               else if (
                 i ===
                 (currentIndex - 1 + testimonials.length) % testimonials.length
               )
-                position = "z-10 scale-80 opacity-30 -translate-x-32";
+                position = "z-10 scale-100 opacity-50 -translate-x-40";
               else if (i === (currentIndex + 1) % testimonials.length)
-                position = "z-10 scale-80 opacity-30 translate-x-32";
+                position = "z-10 scale-100 opacity-50 translate-x-40";
 
               return (
                 <div
@@ -214,8 +213,8 @@ export default function TestimonialCarousel() {
             <TfiArrowRight />
           </button>
 
-          {/* Pagination Dots — at bottom center */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+          {/* Pagination Dots */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
             <PaginationDots
               total={testimonials.length}
               currentIndex={currentIndex}
@@ -235,7 +234,9 @@ export default function TestimonialCarousel() {
             <p className="text-sm text-blue mb-4">
               {testimonials[currentIndex].text}
             </p>
-            <h4 className="font-bold">{testimonials[currentIndex].name}</h4>
+            <h4 className="font-bold text-gold">
+              {testimonials[currentIndex].name}
+            </h4>
             <p className="text-xs text-blue mb-2">
               {testimonials[currentIndex].role}
             </p>
@@ -250,7 +251,7 @@ export default function TestimonialCarousel() {
             </div>
           </div>
 
-          {/* Pagination Dots — below mobile card */}
+          {/* Pagination Dots */}
           <PaginationDots
             total={testimonials.length}
             currentIndex={currentIndex}

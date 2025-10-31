@@ -31,28 +31,34 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="bg-gold/10 px-20 py-20 max-w-full mx-auto">
-      <h2 className="text-6xl font-Bebas text-gold">
-        Benefits Of Our Ui/Ux Services
-      </h2>
-      <p className="text-blue text-xl font-Sans mb-4 max-w-4xl">
-        Using Intellectsoft s UI/UX design services involves using our fifteen
-        years of experience working with large-scale clients. We offer expertise
-        in low-code mobile technologies, implementation metrics, user path
-        tracking, front-end design, and more.
-      </p>
+    <section className="bg-gold/10 px-6 sm:px-10 md:px-16 lg:px-30 py-10 sm:py-12 mx-auto">
+      {/* Heading Section */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+          Benefits Of Our UI/UX Services
+        </h2>
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-2xl font-Sans  max-w-3xl mx-auto">
+          Partnering with our UI/UX design services means leveraging years of
+          expertise in creating seamless, user-centered experiences. We deliver
+          intelligent, scalable, and beautiful designs backed by industry
+          insights and measurable results.
+        </p>
+      </div>
 
-      <div className="grid gap-8 md:grid-cols-3">
+      {/* Benefits Cards Grid */}
+      <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className={`bg-gold rounded-xl p-6 text-center cursor-crosshair shadow-md transform transition duration-300 hover:scale-105 hover:shadow-2xl ${benefit.hoverColor}`}
+            className={`bg-gold/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-center cursor-crosshair shadow-md transform transition duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl ${benefit.hoverColor}`}
           >
-            <div className=" flex justify-center">{benefit.icon}</div>
-            <h3 className="font-Bebas text-blue text-2xl mb-1">
+            <div className="flex justify-center mb-4">{benefit.icon}</div>
+            <h3 className="font-Bebas text-blue text-2xl sm:text-3xl mb-2">
               {benefit.title}
             </h3>
-            <p className="text-blue font-Sans text-md">{benefit.description}</p>
+            <p className="text-blue/90 font-Sans text-base sm:text-lg ">
+              {benefit.description}
+            </p>
           </div>
         ))}
       </div>

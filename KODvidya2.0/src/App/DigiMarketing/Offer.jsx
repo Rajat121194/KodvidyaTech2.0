@@ -50,27 +50,33 @@ const bgColors = [
 
 export default function Services() {
   return (
-    <div className="px-4 py-16 max-w-6xl mx-auto">
-      <div className="mb-12 text-center">
-        <h2 className="text-4xl md:text-6xl font-Bebas text-gold mb-1">
-          What We offer in Digital Marketing Services ?
+    <div className="w-full px-6 sm:px-10 md:px-20 lg:px-30 py-12 sm:py-16">
+      {/* Section Header */}
+      <div className="mb-10 sm:mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[88px] font-Bebas text-gold mb-2 leading-tight">
+          What We Offer in Digital Marketing Services?
         </h2>
-        <p className="text-blue font-Sans text-xl max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl lg:text-3xl font-Sans text-blue max-w-2xl mx-auto">
           Digital marketing cannot be limited to a single strategy...
         </p>
       </div>
 
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 cursor-crosshair">
+      {/* Services Grid */}
+      <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 cursor-crosshair">
         {services.map((service, index) => (
           <div
             key={index}
-            className={`rounded-xl p-4 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 border border-blue ${
+            className={`rounded-xl p-5 sm:p-6 md:p-8 shadow-md hover:shadow-xl transition-transform transform hover:scale-105 border border-blue ${
               bgColors[index % bgColors.length]
             }`}
           >
-            <div className="text-4xl mb-2">{service.icon}</div>
-            <h3 className="font-Bebas text-2xl text-blue">{service.title}</h3>
-            <p className="text-blue font-Sans text-md">{service.description}</p>
+            <div className="text-3xl mb-2">{service.icon}</div>
+            <h3 className="font-Bebas text-2xl sm:text-3xl text-blue mb-2">
+              {service.title}
+            </h3>
+            <p className="text-blue font-Sans text-base sm:text-lg md:text-xl leading-relaxed">
+              {service.description}
+            </p>
           </div>
         ))}
       </div>

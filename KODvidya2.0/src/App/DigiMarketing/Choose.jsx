@@ -1,5 +1,5 @@
 import React from "react";
-import marketingImage from "/home/codewisdom/KodvidyaTech2.0/KODvidya2.0/src/assets/pictures/chpp.jpg";
+import marketingImage from "../../assets/pictures/chpp.jpg";
 import { GiBarbedSun } from "react-icons/gi";
 
 const benefits = [
@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
           <img
             src={marketingImage}
             alt="Digital Marketing"
-            className="rounded-lg shadow-lg w-full"
+            className="rounded-lg shadow-sm shadow-blue w-full"
           />
         </div>
       </div>
