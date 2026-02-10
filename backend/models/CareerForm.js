@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
-const contactFormSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
+const careerFormSchema = new mongoose.Schema({
+  role: String,
+  duration: String,
+  fullName: String,
   email: String,
   message: String,
   cv: {
@@ -14,4 +15,4 @@ const contactFormSchema = new mongoose.Schema({
   dismissedByAdmin: { type: Boolean, default: false },
 });
 
-module.exports = mongoose.model("ContactForm", contactFormSchema);
+module.exports = mongoose.model("CareerForm", careerFormSchema);

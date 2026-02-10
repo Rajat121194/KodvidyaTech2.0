@@ -35,14 +35,14 @@ export default function MobileServices() {
     <section className="bg-gold/10 py-10 px-4 sm:px-8 md:px-16 lg:px-20">
       {/* Header */}
       <div className="text-center max-w-7xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] text-gold font-Bebas mb-4">
+        <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] text-gold font-Bebas">
           Mobile Application Development Services For Various Platforms
         </h2>
-        <p className="sm:text-xl md:text-2xl lg:text-3xl text-blue font-Sans">
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans">
           We make sure every app contributes to your long-term success by
-          concentrating on developing your brand identity and promoting
-          business growth. With over a decade of experience, our mobile app
-          developers have built solutions that satisfy customer needs.
+          concentrating on developing your brand identity and promoting business
+          growth. With over a decade of experience, our mobile app developers
+          have built solutions that satisfy customer needs.
         </p>
       </div>
 
@@ -53,13 +53,13 @@ export default function MobileServices() {
             key={index}
             className="bg-blue border border-gold rounded-2xl p-6 text-center shadow-md hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 transform hover:-translate-y-2"
           >
-            <div className="bg-gold text-chitu inline-block p-3 rounded-full mb-4">
+            <div className="bg-gold text-chitu inline-block p-3 rounded-full">
               {service.icon}
             </div>
-            <h3 className="text-2xl sm:text-3xl font-Bebas mb-3 text-gold leading-snug">
+            <h3 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-Bebas text-gold leading-snug">
               {service.title}
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-gold font-Sans leading-relaxed">
+            <p className="text-base sm:text-md md:text-lg lg-text-xl text-gold font-Sans leading-relaxed">
               {service.description}
             </p>
           </div>

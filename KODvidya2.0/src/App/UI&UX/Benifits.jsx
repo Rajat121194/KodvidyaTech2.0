@@ -34,10 +34,10 @@ export default function Benefits() {
     <section className="bg-gold/10 px-6 sm:px-10 md:px-16 lg:px-30 py-10 sm:py-12 mx-auto">
       {/* Heading Section */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+        <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px] mb-4">
           Benefits Of Our UI/UX Services
         </h2>
-        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-2xl font-Sans  max-w-3xl mx-auto">
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-3xl mx-auto">
           Partnering with our UI/UX design services means leveraging years of
           expertise in creating seamless, user-centered experiences. We deliver
           intelligent, scalable, and beautiful designs backed by industry
@@ -53,10 +53,10 @@ export default function Benefits() {
             className={`bg-gold/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-center cursor-crosshair shadow-md transform transition duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl ${benefit.hoverColor}`}
           >
             <div className="flex justify-center mb-4">{benefit.icon}</div>
-            <h3 className="font-Bebas text-blue text-2xl sm:text-3xl mb-2">
+            <h3 className="font-Bebas text-blue text-2xl sm:text-4xl mb-2">
               {benefit.title}
             </h3>
-            <p className="text-blue/90 font-Sans text-base sm:text-lg ">
+            <p className="text-blue font-Sans text-base sm:text-md md:text-lg lg:text-xl leading-relaxed md:leading-[32px]">
               {benefit.description}
             </p>
           </div>

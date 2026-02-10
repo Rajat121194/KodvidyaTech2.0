@@ -54,16 +54,16 @@ const WebServices = () => {
   return (
     <div className="mx-auto px-5 sm:px-10 md:px-20 lg:px-30 py-12 bg-chitu">
       {/* Header section */}
-      <div className="mb-12 flex flex-col md:flex-row gap-6 md:gap-8">
+      <div className="mb-12 flex flex-col md:flex-row gap-2 md:gap-2">
         {/* Left heading */}
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-[88px] font-Bebas mb-4 text-gold leading-tight">
-            What Web Development <br /> Services Solution We Offer?
+          <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px] ">
+            What Web Development Services Solution We Offer?
           </h2>
         </div>
 
         {/* Right paragraph */}
-        <div className="w-full md:w-1/2 text-blue text-base sm:text-lg md:text-2xl lg:text-3xl font-Sans leading-relaxed text-center md:text-left">
+        <div className="w-full md:w-1/2 text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] text-center md:text-left">
           <p>
             We understand the value of allowing many mindsets in the many
             nations of today. We use a range of technologies to provide complete
@@ -79,13 +79,13 @@ const WebServices = () => {
             key={index}
             className={`group p-6 sm:p-8 rounded-2xl border border-gold text-blue font-Sans transition-all duration-300 transform ${service.bgColor} hover:scale-105 hover:shadow-xl`}
           >
-            <div className="mb-4 flex justify-center md:justify-start text-blue">
+            <div className="flex justify-center md:justify-start text-blue">
               {service.icon}
             </div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Bebas mb-3 text-center md:text-left">
+            <h3 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-Bebas text-gold leading-tight md:leading-[70px] text-center md:text-left">
               {service.title}
             </h3>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-center md:text-left leading-relaxed">
+            <p className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px] text-center md:text-left">
               {service.description}
             </p>
           </div>

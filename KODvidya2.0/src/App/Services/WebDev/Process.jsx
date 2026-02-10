@@ -52,10 +52,10 @@ const WebDevProcess = () => {
     <div className="px-5 sm:px-10 md:px-20 lg:px-30 py-12 mx-auto bg-gold/10">
       {/* Header Section */}
       <div className="text-center mb-10 px-3">
-        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold leading-tight">
+        <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
           Our Web Development Services Process
         </h2>
-        <p className="mt-3 text-blue text-base sm:text-lg md:text-2xl lg:text-3xl max-w-3xl mx-auto font-Sans leading-relaxed">
+        <p className="mt-3 text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-3xl mx-auto">
           Once we engage in a conversation, we provide comprehensive solutions
           and a detailed roadmap with full dedication...
         </p>
@@ -68,11 +68,11 @@ const WebDevProcess = () => {
             key={index}
             className="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out text-center border border-gold"
           >
-            <div className="mb-4 flex justify-center">{service.icon}</div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Bebas text-gold mb-2">
+            <div className=" flex justify-center">{service.icon}</div>
+            <h3 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-Bebas text-gold leading-tight md:leading-[70px]">
               {service.title}
             </h3>
-            <p className="text-blue font-Sans text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+            <p className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px]">
               {service.description}
             </p>
           </div>
@@ -81,4 +81,5 @@ const WebDevProcess = () => {
     </div>
   );
 };
+
 export default WebDevProcess;

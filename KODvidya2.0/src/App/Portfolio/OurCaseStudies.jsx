@@ -278,7 +278,7 @@ const CaseStudies = () => {
           </p>
         </div>
         {/* Right Section */}
-        <div className="flex-1 flex justify-center md:justify-end">
+        <div className="flex-1 flex justify-center md:justify-end mb-10">
           <img
             src={centerImg}
             alt="Case Studies Illustration"
@@ -288,7 +288,7 @@ const CaseStudies = () => {
       </div>
 
       {/* Project cards */}
-      <div className="space-y-2">
+      <div className="space-y-6">
         {/* Top row */}
         <div className="flex flex-col sm:flex-row gap-6">
           {[caseStudies[0], caseStudies[1]].map((item) => (

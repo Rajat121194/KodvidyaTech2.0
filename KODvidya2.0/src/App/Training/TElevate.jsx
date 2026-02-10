@@ -3,13 +3,14 @@ import heroImg from "../../assets/pictures/tp.jpg";
 
 const TElevate = () => {
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center justify-between  px-6 md:px-16 bg-chitu py-62">
+    <section className="flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-10 md:px-16 lg:px-20 xl:px-30 bg-chitu py-16 sm:py-20 md:py-24 lg:py-58 overflow-hidden">
       {/* Text Section */}
-      <div className="w-full md:w-1/2 space-y-4 p-5 text-center md:text-left">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+      <div className="w-full md:w-1/2 text-center md:text-left mt-10 md:mt-0">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-Bebas text-gold leading-tight md:leading-[68px] mb-4 md:max-w-xl mx-auto md:mx-0">
           Elevate your Career with CodeMechanism Infotech
         </h1>
-        <p className="sm:text-xl md:text-2xl lg:text-3xl font-Sans text-blue">
+
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-[95%] sm:max-w-xl mx-auto md:mx-0">
           Using cutting-edge technological solutions and remaining one step
           ahead of the competition are essential to advancing your career with
           CodeMechanism Infotech. Here’s how CodeMechanism Infotech can help you
@@ -18,14 +19,14 @@ const TElevate = () => {
       </div>
 
       {/* Image Section */}
-      <div className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+      <div className="w-full md:w-1/2 flex justify-center md:justify-end">
         <img
           src={heroImg}
           alt="Training Hero"
-          className="rounded-2xl w-[90%] sm:w-[80%] md:w-[85%] lg:w-[90%] max-w-xl object-cover"
+          className="rounded-2xl w-[90%] sm:w-[80%] md:w-[85%] lg:w-[90%] max-w-lg mt-6 md:max-w-xl object-cover"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -3,7 +3,7 @@ import caseImg from "../../assets/pictures/case-study.jpg";
 
 const CaseStudies = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gold/10">
+    <section className="relative w-full py-10 flex items-center justify-center overflow-hidden bg-gold/10">
       {/* Background Tint */}
       <div className="absolute inset-0 bg-gold/10"></div>
 

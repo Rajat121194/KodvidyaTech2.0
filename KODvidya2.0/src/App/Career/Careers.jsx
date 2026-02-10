@@ -10,7 +10,7 @@ export default function Career() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedRole, setSelectedRole] = useState("");
   const [duration, setDuration] = useState("");
-  const [step, setStep] = useState("form"); // 👈 "duration" | "form"
+  const [step, setStep] = useState("form");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -56,25 +56,36 @@ export default function Career() {
     }
   };
 
-  const handleSubmit = (e) => {
+  // ✅ Updated handleSubmit to POST FormData to backend
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const submission = {
-      role: selectedRole,
-      duration: selectedRole === "Internship" ? duration : null,
-      ...formData,
-    };
-    console.log("Form Submitted:", submission);
 
-    alert(
-      `Application Submitted!\nRole: ${submission.role}${
-        submission.duration ? ` (${submission.duration})` : ""
-      }\nName: ${submission.fullName}\nEmail: ${submission.email}\nMessage: ${
-        submission.message
-      }\nCV: ${submission.cv ? submission.cv.name : "Not uploaded"}`
-    );
+    const formPayload = new FormData();
+    formPayload.append("role", selectedRole);
+    if (selectedRole === "Internship") formPayload.append("duration", duration);
+    formPayload.append("fullName", formData.fullName);
+    formPayload.append("email", formData.email);
+    formPayload.append("message", formData.message);
+    if (formData.cv) formPayload.append("cv", formData.cv);
 
-    setShowPopup(false);
-    setFormData({ fullName: "", email: "", message: "", cv: null });
+    try {
+      const res = await fetch("http://localhost:5000/api/careers", {
+        method: "POST",
+        body: formPayload,
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("✅ Application submitted successfully!");
+        setShowPopup(false);
+        setFormData({ fullName: "", email: "", message: "", cv: null });
+      } else {
+        alert("❌ Error: " + (data.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      alert("⚠️ Failed to submit application. Please try again later.");
+    }
   };
 
   return (
@@ -161,7 +172,7 @@ export default function Career() {
                     key={d}
                     onClick={() => {
                       setDuration(d);
-                      setStep("form"); // 👈 go to form
+                      setStep("form");
                     }}
                     className="w-full py-2 rounded text-blue bg-yellowLight hover:bg-gold hover:text-blue transition"
                   >
@@ -171,12 +182,13 @@ export default function Career() {
               </div>
             )}
 
-            {/* STEP 2: Show Form */}
+            {/* STEP 2: Application Form */}
             {step === "form" && (
               <form onSubmit={handleSubmit} className="space-y-3 text-sm">
                 <h2 className="text-xl font-bold text-gold mb-3 text-center">
                   Apply Now
                 </h2>
+
                 <div>
                   <label className="block text-blue mb-1">Role</label>
                   <input
@@ -190,6 +202,7 @@ export default function Career() {
                     className="w-full border rounded px-2 py-1 bg-gray-100 text-sm"
                   />
                 </div>
+
                 <div>
                   <label className="block text-blue mb-1">Full Name</label>
                   <input
@@ -201,6 +214,7 @@ export default function Career() {
                     className="w-full border rounded px-2 py-1 text-sm"
                   />
                 </div>
+
                 <div>
                   <label className="block text-blue mb-1">Email</label>
                   <input
@@ -212,6 +226,7 @@ export default function Career() {
                     className="w-full border rounded px-2 py-1 text-sm"
                   />
                 </div>
+
                 <div>
                   <label className="block text-blue mb-1">Upload CV</label>
                   <input
@@ -223,6 +238,7 @@ export default function Career() {
                     className="w-full border rounded px-2 py-1 text-sm"
                   />
                 </div>
+
                 <div>
                   <label className="block text-blue mb-1">Message</label>
                   <textarea
@@ -234,6 +250,7 @@ export default function Career() {
                     className="w-full border rounded px-2 py-1 text-sm"
                   ></textarea>
                 </div>
+
                 <button
                   type="submit"
                   className="w-full bg-gold text-white py-1.5 rounded text-sm hover:bg-chitu hover:text-gold hover:border-gold border"

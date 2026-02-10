@@ -7,11 +7,11 @@ const HappyClients = () => {
     <section className="bg-gold text-chitu py-10 px-4 sm:px-8 md:px-12 lg:px-30 flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
       {/* Left Text Section */}
       <div className="w-full lg:w-1/2">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas mb-4 text-center lg:text-left">
+        <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-blue leading-tight md:leading-[70px] text-center lg:text-left">
           Happy Clients
         </h2>
 
-        <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-Sans text-center lg:text-left mb-6">
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] text-center lg:text-left mb-6">
           CodeMechanism Infotech efficiently showcases their satisfied clients
           through case studies, testimonials, and visuals — proving their
           expertise, reliability, and the positive impact of their services on

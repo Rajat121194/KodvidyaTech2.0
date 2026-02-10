@@ -30,7 +30,7 @@ function Navbar() {
   const mobileMenuRef = useRef(null);
   const location = useLocation();
 
-  // ✅ Scroll behavior
+  // Scroll behavior
   const controlSecondBar = () => {
     const currentScrollY = window.scrollY;
     setShowSecondBar(
@@ -44,13 +44,13 @@ function Navbar() {
     return () => window.removeEventListener("scroll", controlSecondBar);
   }, []);
 
-  // ✅ Prevent scroll when menu/modal open
+  // Prevent scroll when menu/modal open
   useEffect(() => {
     document.body.style.overflow =
       isMobileMenuOpen || isHireFormOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen, isHireFormOpen]);
 
-  // ✅ Close mobile menu if clicked outside
+  // Close mobile menu if clicked outside (works with stopPropagation fix below)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
@@ -60,13 +60,11 @@ function Navbar() {
     };
     if (isMobileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobileMenuOpen]);
 
-  // ✅ Form handling
+  // Form handling
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -240,16 +238,23 @@ function Navbar() {
       <div className="lg:hidden fixed top-0 left-0 w-full z-[1000] bg-chitu/70 backdrop-blur-md shadow-md">
         <div className="flex justify-between items-center h-16 px-4">
           <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
+
+          {/* 
+            IMPORTANT:
+            Use onMouseDown to stop propagation so the document 'mousedown' outside handler
+            does not run before the button's click handler. That prevented the toggle from working.
+          */}
           <button
-            onClick={() => {
-              if (isMobileMenuOpen) {
-                setIsMobileMenuOpen(false);
-                setIsDropdownOpen(false);
-              } else {
-                setIsMobileMenuOpen(true);
-              }
+            // stop propagation on mousedown so global handler won't close/open incorrectly
+            onMouseDown={(e) => {
+              e.stopPropagation();
+              // toggle the menu safely
+              setIsMobileMenuOpen((prev) => !prev);
+              // close dropdown inside mobile menu when toggling
+              setIsDropdownOpen(false);
             }}
-            className="text-gold font-extrabold text-2xl"
+            className="text-gold font-extrabold text-3xl focus:outline-none z-[1100] relative"
+            aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? "✖" : "☰"}
           </button>
@@ -260,6 +265,8 @@ function Navbar() {
           className={`transition-all duration-500 overflow-hidden bg-chitu/90 ${
             isMobileMenuOpen ? "max-h-screen py-4" : "max-h-0 py-0"
           }`}
+          // prevent clicks inside the menu from bubbling up to document
+          onMouseDown={(e) => e.stopPropagation()}
         >
           <div className="flex flex-col px-4 space-y-4 font-semibold">
             {navItems.map((item, index) =>

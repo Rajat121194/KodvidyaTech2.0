@@ -7,6 +7,7 @@ const hireUsFormSchema = new mongoose.Schema({
   phone: String,
   message: String,
   createdAt: { type: Date, default: Date.now },
+  dismissedByAdmin: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("HireUsForm", hireUsFormSchema);

@@ -6,18 +6,17 @@ const UiUxDesign = () => {
   return (
     <section className="bg-chitu px-4 sm:px-8 md:px-12 lg:px-30 py-22 sm:py-16 md:py-24 lg:py-52">
       <div className="mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10">
-        
         {/* Left Text Section */}
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold mb-4">
+          <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px] mb-4">
             UI/UX Design And Consulting Services
           </h2>
 
-          <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-Sans text-blue mb-6">
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] mb-6">
             At CodeMechanism Infotech, we offer the most advanced UI and UX
             design techniques to guarantee the best outcome that is delivered on
             time. Our creative team is capable of working as a unique design
-            firm for a complex platform due to our creative design process..
+            firm for a complex platform due to our creative design process.
           </p>
 
           <div className="flex justify-center md:justify-start">
@@ -35,7 +34,7 @@ const UiUxDesign = () => {
           <img
             src={uiUxImage}
             alt="UI UX Design Illustration"
-            className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-2xl shadow-2xl shadow-gold object-cover"
+            className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl border-blue rounded-2xl shadow-2xl shadow-gold object-cover"
           />
         </div>
       </div>
@@ -44,4 +43,3 @@ const UiUxDesign = () => {
 };
 
 export default UiUxDesign;
-

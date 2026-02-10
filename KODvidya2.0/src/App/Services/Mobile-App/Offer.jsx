@@ -16,15 +16,19 @@ const MobileAppServices = () => {
 
         {/* Content Section */}
         <div className="space-y-4">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+          <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
             What We Offer in Mobile App Development Services
           </h2>
 
-          <p className="sm:text-xl md:text-2xl lg:text-3xl text-blue font-Sans">
-            We provide a variety of mobile app development services that are customised to meet your specific needs. We customise our services to meet your goals and budget, whether you need apps for particular platforms, cross-platform solutions, or development for a new platform.
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px]">
+            We provide a variety of mobile app development services that are
+            customised to meet your specific needs. We customise our services to
+            meet your goals and budget, whether you need apps for particular
+            platforms, cross-platform solutions, or development for a new
+            platform.
           </p>
 
-          <ul className="text-base sm:text-lg md:text-xl text-blue space-y-2">
+          <ul className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px] space-y-2">
             {[
               "Custom iOS and Android apps development",
               "Native and cross-platform solutions",
@@ -34,7 +38,7 @@ const MobileAppServices = () => {
               "Automated QA and testing",
             ].map((item, index) => (
               <li key={index} className="flex items-start gap-3">
-                <TiTickOutline className="text-gold mt-1 text-xl md:text-2xl flex-shrink-0" />
+                <TiTickOutline className="text-gold mt-1 text-lg md:text-xl flex-shrink-0" />
                 <span>{item}</span>
               </li>
             ))}

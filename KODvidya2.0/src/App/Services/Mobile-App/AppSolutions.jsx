@@ -60,10 +60,10 @@ const AppSolutions = () => {
       <div className="mx-auto">
         {/* Header */}
         <div className="mb-10 flex flex-col md:flex-row md:justify-between gap-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[72px] text-gold font-Bebas leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
             Mobile Application Solutions for Specific Industries
           </h2>
-          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl">
+          <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-3xl">
             Our expertise is in delivering custom mobile application services to
             a range of categories. We are experienced at providing cutting-edge
             digital solutions to businesses of all sizes, quickly and skillfully
@@ -72,7 +72,7 @@ const AppSolutions = () => {
         </div>
 
         {/* Accordion Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6">
           {industries.map((industry, index) => (
             <div
               key={index}
@@ -87,7 +87,9 @@ const AppSolutions = () => {
                   >
                     {industry.icon}
                   </div>
-                  <h3 className={`text-xl sm:text-2xl md:text-3xl font-semibold ${industry.textTint}`}>
+                  <h3
+                    className={`text-2xl sm:text-3xl md:text-[32px] font-Bebas ${industry.textTint}`}
+                  >
                     {industry.title}
                   </h3>
                 </div>
@@ -105,7 +107,7 @@ const AppSolutions = () => {
                 }`}
               >
                 <div
-                  className={`rounded-md p-4 mt-2 ${industry.bgTint} text-blue text-sm sm:text-base md:text-lg leading-relaxed`}
+                  className={`rounded-md p-4 mt-2 ${industry.bgTint} text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px]`}
                 >
                   <p>{industry.description}</p>
                 </div>

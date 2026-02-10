@@ -13,7 +13,7 @@ const Elevate = () => {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-10 md:px-16 lg:px-30 py-16 md:py-40 sm:py-20 lg:py-60 bg-chitu text-gold overflow-hidden">
       {/* Text Section */}
-      <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-8 text-center md:text-left space-y-4 md:space-y-6">
+      <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-2 text-center md:text-left space-y-4 md:space-y-6">
         <h1 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
           Elevate your Career at CodeMechanism Infotech
         </h1>
@@ -36,11 +36,11 @@ const Elevate = () => {
       </div>
 
       {/* Image Section */}
-      <div className="w-full md:w-1/2 flex justify-center mb-10 md:mb-0">
+      <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
         <img
           src={heroImg}
           alt="Career Opportunities"
-          className="rounded-3xl max-w-[90%] sm:max-w-[500px] md:max-w-[600px] w-full h-auto object-cover shadow-blue shadow-2xl transition-transform duration-500 hover:scale-105"
+          className="rounded-3xl max-w-[90%] sm:max-w-[500px] md:max-w-[600px] sm:mt-10 md:mt-6 lg:mt-2 mt-8 w-full h-auto object-cover shadow-blue shadow-2xl transition-transform duration-500 hover:scale-105"
         />
       </div>
 

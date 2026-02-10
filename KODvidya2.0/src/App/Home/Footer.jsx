@@ -45,7 +45,7 @@ export default function FooterSection() {
               </h3>
 
               <div className="flex items-center justify-center md:justify-start gap-1">
-                <MdLocationPin className="text-red-600 text-2xl md:text-6xl" />
+                <MdLocationPin className="text-red-600 text-5xl sm:text-4xl md:text-6xl lg:text-6xl" />
                 <a
                   href="https://maps.app.goo.gl/66EAnyh6sojb3xYb6"
                   target="_blank"

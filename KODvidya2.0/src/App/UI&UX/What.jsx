@@ -56,7 +56,7 @@ function App() {
     },
   ];
 
-   const FeatureCard = ({ icon, title, description, bgColor }) => (
+  const FeatureCard = ({ icon, title, description, bgColor }) => (
     <div className="flex items-start space-x-4 sm:space-x-5">
       <div
         className={`min-w-12 min-h-12 w-12 h-12 flex items-center justify-center rounded-full text-white ${bgColor}`}
@@ -64,10 +64,12 @@ function App() {
         {icon}
       </div>
       <div>
-        <h3 className="text-blue text-3xl font-Bebas">
+        <h3 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-Bebas text-gold leading-tight md:leading-[70px]">
           {title}
         </h3>
-        <p className="text-blue text-xl">{description}</p>
+        <p className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px]">
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -75,16 +77,23 @@ function App() {
   return (
     <div className="bg-chitu px-4 sm:px-8 md:px-16 lg:px-30 py-10">
       {/* Heading */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[88px] font-Bebas text-gold text-center mb-3">
+      <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold text-center leading-tight md:leading-[70px] mb-6">
         What is UI/UX Design
       </h2>
 
       {/* Paragraphs */}
-      <p className="text-center text-base sm:text-lg md:text-2xl lg:text-3xl max-w-4xl mx-auto text-blue mb-4">
-        he goal of User Experience Design (UX design) is to provide products and services that offer significant experiences in a variety of fields. In order to optimise usability and happiness, it involves understanding user needs and behaviours. However, every visual component, motion, and transition in a product works together to provide a smooth and enjoyable user experience by using User Interface (UI) design.
+      <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] text-center max-w-4xl mx-auto mb-4">
+        The goal of User Experience Design (UX design) is to provide products
+        and services that offer significant experiences in a variety of fields.
+        In order to optimise usability and happiness, it involves understanding
+        user needs and behaviours. However, every visual component, motion, and
+        transition in a product works together to provide a smooth and enjoyable
+        user experience by using User Interface (UI) design.
       </p>
-      <p className="text-base sm:text-lg md:text-xl text-center max-w-4xl mx-auto mb-12 text-blue">
-        In today’s digital world, UX and UI design work together to create user-friendly interfaces that boost engagement and promote success.
+
+      <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] text-center max-w-4xl mx-auto mb-12">
+        In today’s digital world, UX and UI design work together to create
+        user-friendly interfaces that boost engagement and promote success.
       </p>
 
       {/* Features + Middle Graphic */}

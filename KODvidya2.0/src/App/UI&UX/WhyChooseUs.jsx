@@ -52,13 +52,13 @@ const WhyChooseUs = () => (
   <section className="py-16 px-6 md:px-30 bg-gold/10">
     {/* Header Section: Heading Left, Paragraph Right */}
     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-10 gap-6">
-      <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold  lg:w-1/2">
+      <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px] lg:w-1/2">
         Why Choose Us...?
       </h2>
-      <p className="text-blue sm:text-xl md:text-2xl lg:text-3xl max-w-3xl font-Sans lg:w-1/2">
-        Globally, our seasoned team of professionals at CodeMechanism Infotech has
-        crafted over 250 outstanding UI/UX designs. From initial concept to final
-        launch, each project is meticulously executed. We specialise in
+      <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-3xl lg:w-2/3">
+        Globally, our seasoned team of professionals at CodeMechanism Infotech
+        has crafted over 250 outstanding UI/UX designs. From initial concept to
+        final launch, each project is meticulously executed. We specialise in
         comprehensive web design services, covering UX design, UI design, and
         branding consultancy, ensuring every aspect of your digital presence
         reflects excellence and innovation.
@@ -70,16 +70,13 @@ const WhyChooseUs = () => (
       {services.map((svc, idx) => (
         <div
           key={idx}
-          className={`
-            group p-6 rounded-xl border transition duration-300 transform 
-            md:hover:scale-105 bg-white text-sky-600 ${svc.hoverBg}
-          `}
+          className={`group p-6 rounded-xl border border-gold transition duration-300 transform md:hover:scale-105 bg-white text-sky-600 ${svc.hoverBg}`}
         >
-          <div className="mb-2 md:group-hover:text-gold">{svc.icon}</div>
-          <h3 className="text-3xl font-Bebas text-blue md:group-hover:text-white">
+          <div className=" md:group-hover:text-gold">{svc.icon}</div>
+          <h3 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-Bebas text-blue md:group-hover:text-white leading-tight">
             {svc.title}
           </h3>
-          <p className="text-xl text-blue md:group-hover:text-white">
+          <p className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px] md:group-hover:text-white">
             {svc.description}
           </p>
         </div>

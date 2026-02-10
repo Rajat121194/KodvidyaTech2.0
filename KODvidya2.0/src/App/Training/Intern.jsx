@@ -56,21 +56,22 @@ export default function TrainingPrograms() {
   const bgColors = ["bg-chitu", "bg-chitu", "bg-chitu"];
 
   return (
-    <div className="max-w-full mx-auto px-4 sm:px-10 md:px-20 lg:px-30 py-10 text-center bg-gold/10">
+    <section className="max-w-full mx-auto px-6 sm:px-10 md:px-16 lg:px-24 py-8 bg-gold/10 text-center">
       {/* Headings */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[88px] font-Bebas text-gold mb-4 leading-tight">
-        Our culture is a reflection of our shared values, attitudes, beliefs, and working practices.
+      <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px] md:max-w-4xl mx-auto">
+        Our culture is a reflection of our shared values, attitudes, beliefs,
+        and working practices.
       </h2>
 
-      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-Sans text-blue mb-2">
+      <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-[95%] sm:max-w-2xl mx-auto mb-2">
         Industrial Training / Internship Programs
       </p>
 
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue font-Sans mb-4">
+      <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-[95%] sm:max-w-2xl mx-auto mb-2">
         45 days / 3 months / 6 months
       </p>
 
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue font-Sans mb-10">
+      <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-[95%] sm:max-w-2xl mx-auto mb-10">
         Email us your resume at:{" "}
         <a
           href="mailto:rockyrangra1993@gmail.com"
@@ -89,11 +90,11 @@ export default function TrainingPrograms() {
               bgColors[idx % bgColors.length]
             }`}
           >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-Bebas text-gold mb-3 leading-tight">
+            <h3 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-Bebas text-gold leading-tight md:leading-[70px] mb-4 md:mb-0 md:max-w-2xl">
               {program.title}
             </h3>
 
-            <p className="text-base sm:text-lg md:text-2xl text-blue font-Sans mb-4 leading-relaxed">
+            <p className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px] max-w-[95%] sm:max-w-2xl mx-auto md:mx-0 mb-4">
               {program.description}
             </p>
 
@@ -110,6 +111,6 @@ export default function TrainingPrograms() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

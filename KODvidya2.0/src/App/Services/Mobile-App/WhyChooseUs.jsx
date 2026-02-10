@@ -55,12 +55,14 @@ export default function WhyChooseUs() {
   return (
     <section className="px-4 sm:px-6 md:px-10 lg:px-30 py-16 sm:py-6 lg:py-10 bg-gold/10">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[88px] font-Bebas text-gold">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-4">
+        <h2 className="text-3xl sm:text-5xl md:text-[50px] lg:text-[65px] font-Bebas text-gold leading-tight md:leading-[70px]">
           Why Choose Us?
         </h2>
-        <p className="sm:text-lg md:text-xl lg:text-2xl font-Sans text-blue max-w-2xl">
-          Latest Technology: In order to stay ahead of the competition, we constantly implement new technologies. This guarantees advanced solutions and creative improvements.
+        <p className="text-blue text-base sm:text-lg md:text-xl lg:text-[20px] font-Sans leading-relaxed md:leading-[32px] max-w-2xl">
+          Latest Technology: In order to stay ahead of the competition, we
+          constantly implement new technologies. This guarantees advanced
+          solutions and creative improvements.
         </p>
       </div>
 
@@ -71,13 +73,11 @@ export default function WhyChooseUs() {
             key={index}
             className="group border-2 border-gold rounded-2xl p-6 sm:p-8 bg-white shadow-md transition-all duration-300 hover:scale-[0.99] hover:shadow-xl hover:bg-gold/5"
           >
-            <div className="text-5xl sm:text-6xl text-gold mb-4 transition-transform duration-300 group-hover:scale-102">
-              {card.icon}
-            </div>
-            <h3 className="font-Bebas text-3xl sm:text-4xl text-gold mb-2">
+            <div className="text-5xl sm:text-6xl text-gold">{card.icon}</div>
+            <h3 className="font-Bebas text-3xl sm:text-4xl text-gold leading-tight">
               {card.title}
             </h3>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue transition-colors duration-300">
+            <p className="text-blue text-base sm:text-md md:text-lg lg:text-xl font-Sans leading-relaxed md:leading-[32px] transition-colors duration-300">
               {card.description}
             </p>
           </div>
